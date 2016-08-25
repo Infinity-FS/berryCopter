@@ -6,9 +6,7 @@ IS_PI = true
 
 # ------
 all:
-	make clean && \
-	make install_libs && \
-	make build
+	make build && \
 
 # ------
 build:
@@ -19,14 +17,27 @@ build:
 install_libs:
 ifeq ($(IS_PI),true) 
 	rm -rf $(BUILD_LIB_DIR) && \
-	make build_lib_PIGPIO
+	make install_lib_PIGPIO
 endif
 
-build_lib_PIGPIO:
+deinstall_libs:
+ifeq ($(IS_PI),true) 
+	make deinstall_lib_PIGPIO
+	rm -rf $(BUILD_LIB_DIR) && \
+endif
+
+# - pigpio
+install_lib_PIGPIO:
 	mkdir -p $(BUILD_LIB_DIR)/pigpio_lib && \
 	cp -R $(LIB_DIR)/pigpio_lib/PIGPIO/. $(BUILD_LIB_DIR)/pigpio_lib/ && \
 	make -C $(BUILD_LIB_DIR)/pigpio_lib/ -j4 && \
-	make install -C $(BUILD_LIB_DIR)/pigpio_lib/ 
+	sudo make install -C $(BUILD_LIB_DIR)/pigpio_lib/ 
+
+deinstall_lib_PIGPIO:
+	sudo make uninstall -C $(BUILD_LIB_DIR)/pigpio_lib/ && \
+	make -C $(BUILD_LIB_DIR)/pigpio_lib/ -j4 
+
 # ------
 clean: 
+	make deinstall_libs && \
 	rm -rf $(BUILD_DIR)
