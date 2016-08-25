@@ -22,8 +22,8 @@ endif
 
 deinstall_libs:
 ifeq ($(IS_PI),true) 
-	make deinstall_lib_PIGPIO
-	rm -rf $(BUILD_LIB_DIR) && \
+	make deinstall_lib_PIGPIO && \
+	rm -rf $(BUILD_LIB_DIR) 
 endif
 
 # - pigpio
