@@ -28,7 +28,7 @@ uninstall_libs:
 
 # - pigpio
 install_lib_PIGPIO:
-	unzip $(LIB_DIR)/pigpio_lib/pigpio.zip -d $(PIGPIO_DIR) && \
+	unzip $(LIB_DIR)/pigpio_lib/pigpio.zip -d $(LIB_DIR)/pigpio_lib && \
 	make -C $(PIGPIO_DIR) -j4 && \
 	sudo make install -C $(PIGPIO_DIR) 
 
