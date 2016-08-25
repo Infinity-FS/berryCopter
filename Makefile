@@ -24,7 +24,7 @@ install_libs:
 	make install_lib_PIGPIO
 
 uninstall_libs:
-	make uninstall_lib_PIGPIO && \
+	make uninstall_lib_PIGPIO
 
 # - pigpio
 install_lib_PIGPIO:
@@ -35,7 +35,7 @@ install_lib_PIGPIO:
 uninstall_lib_PIGPIO:
 	sudo make uninstall -C $(PIGPIO_DIR) && \
 	make clean -C $(PIGPIO_DIR) -j4 && \
-	sudo rm -rf $(PIGPIO_DIR) && \
+	sudo rm -rf $(PIGPIO_DIR)
 
 # ------
 clean: 
