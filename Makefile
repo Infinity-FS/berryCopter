@@ -1,12 +1,23 @@
+# ---
+CC = g++
+CFLAGS = -O3 -Wall 
+LDFLAGS = $(CFLAGS) -lpigpio -lrt
+
+ # ---
 BUILD_DIR = build
 LIB_DIR = lib
 SRC_DIR = src
+
+# ---
+SOURCES = $(shell find ./$(SRC_DIR) -type f  -name "*.cpp")
+OBJECTS= $(SOURCES: .cpp = .o)
+EXECUTABLE = start
 
 PIGPIO_DIR = $(LIB_DIR)/pigpio_lib/PIGPIO
 
 # ------
 all:
-	make build
+	make build_cpp
 
 # ------
 install:
@@ -15,8 +26,7 @@ uninstall:
 	make uninstall_libs
 
 # ------
-build:
-	@echo hi FINI
+build_cpp: $(SOURCES) $(EXECUTABLE)
 
 # ------
 # LIBS
@@ -40,3 +50,10 @@ uninstall_lib_PIGPIO:
 # ------
 clean: 
 	rm -rf $(BUILD_DIR)
+
+# ------
+$(EXECUTABLE): $(OBJECTS) 
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+
+#.cpp.o:
+#	$(CC) $(CFLAGS) $< -o $@
