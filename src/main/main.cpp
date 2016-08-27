@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <IGpio.h>
+#include "../IGpio/IGpio.h"
 
 int main()
 {
