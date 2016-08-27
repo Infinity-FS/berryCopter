@@ -1,7 +1,7 @@
 # ---
 CC = g++
-CFLAGS = -O3 -Wall 
-LDFLAGS = $(CFLAGS) -lpigpio -lrt
+CFLAGS = -O3 -Wall -pthread
+LDFLAGS = -lpigpio -lrt
 
  # ---
 BUILD_DIR = build
@@ -53,7 +53,7 @@ clean:
 
 # ------
 $(EXECUTABLE): $(OBJECTS) 
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJECTS) -o $@
 
 #.cpp.o:
 #	$(CC) $(CFLAGS) $< -o $@

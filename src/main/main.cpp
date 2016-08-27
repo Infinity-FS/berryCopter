@@ -1,9 +1,13 @@
-// Example program
 #include <iostream>
 #include <string>
-#include <pigpio.h>
 
 int main()
 {
-  std::cout << "What is your name? ";
+	if (gpioInitialise() < 0){
+ 		// pigpio initialisation failed.
+ 		std::cout << "initialised FAILED";
+	} else {
+   		// pigpio initialised okay.
+		std::cout << "initialised OK";
+	}
 }
