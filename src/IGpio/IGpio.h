@@ -2,6 +2,7 @@
 #define __IGPIO_H_INCLUDED__
 
 #include <pigpio.h>
+#include <iostream>
 
 class IGpio {
  public:
