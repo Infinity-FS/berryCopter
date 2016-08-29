@@ -22,8 +22,11 @@ class GpioPin {
 
  	int getPWM ();
  	int getPWMrange ();
- 	int getPWMpercentage ();
+ 	float getPWMpercentage ();
  	int getPWMfrequency ();
+
+ 	//---
+ 	void print();
 
  private:
  	IGpio& IGpioInstance;

@@ -5,16 +5,17 @@
 IGpio::IGpio() {
 	if (gpioInitialise() < 0) {
    		// pigpio initialisation failed.
-		std::cout << "FAILED";
+		std::log << "FAILED";
 	} else {
    		// pigpio initialised okay.
-		std::cout << "Initalized PIGPIO\n";
+		std::log << "Initalized PIGPIO\n";
 	}
 }
 // --------------------
 // ~GPIO()
 IGpio::~IGpio() {
 	gpioTerminate();
+	std::log << "IGpio terminated";
 }
 
 // --------------------

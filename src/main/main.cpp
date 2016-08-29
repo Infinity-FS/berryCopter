@@ -12,7 +12,7 @@ int main () {
 	std::cout << " pwm " << pin.getPWM() << ", range " << pin.getPWMrange() << ", percentage " << pin.getPWMpercentage() << " freq " << pin.getPWMfrequency() << "\n";
 
 	pin.setPWM(0.0f);
-	std::cout << " pwm " << pin.getPWM() << ", range " << pin.getPWMrange() << ", percentage " << pin.getPWMpercentage() << " freq " << pin.getPWMfrequency() << "\n";
+	
 
 	pin.setPWM(0.5f);
 	std::cout << " pwm " << pin.getPWM() << ", range " << pin.getPWMrange() << ", percentage " << pin.getPWMpercentage() << " freq " << pin.getPWMfrequency() << "\n";
