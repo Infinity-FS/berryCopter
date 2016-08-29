@@ -25,8 +25,8 @@ int GpioPin::getNumber() {
 }
 // --------------------
 // PWM
-void GpioPin::setPWM (int t_open) {
-	unsigned int range = this->getPWMrange();
+void GpioPin::setPWM (unsigned int t_open) {
+	int range = this->getPWMrange();
 
 	if (t_open > range) {
 		t_open = range;
