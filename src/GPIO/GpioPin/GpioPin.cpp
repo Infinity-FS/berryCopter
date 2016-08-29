@@ -7,14 +7,14 @@ GpioPin::GpioPin(unsigned int t_gpioNumber, unsigned int t_mode, IGpio& t_IGPIO)
 	gpioNumber(t_gpioNumber)
 {
 	(this->IGpioInstance).setMode(this->gpioNumber, t_mode);
-	this->setPWM(800u, 12000u, 0u);
+	this->setPWM(800u, 120u, 0u);
 }
 // --------------------
 
 // GpioPin destructor
 GpioPin::~GpioPin() {
 	// close Pin
-	this->setPWM(800u, 12000u, 0u);
+	this->setPWM(800u, 120u, 0u);
 	std::cout << "PIN(" << this->gpioNumber << ") destroyed: " << "\n";
 }
 // --------------------
@@ -27,6 +27,16 @@ int GpioPin::getNumber() {
 }
 // --------------------
 // PWM
+void GpioPin::setPWM (unsigned int t_open) {
+	this->setPWM(800u, 120u, t_open);
+}
+
+void GpioPin::setPWM (unsigned int t_pulseWidth_ns, unsigned int t_frequency_hz) {
+	// the time every period has in ns 
+	int period_ns = 1000000/t_frequency_hz;
+	this->setPWM(t_frequency_hz, period_ns, t_pulseWidth_ns);
+}
+
 void GpioPin::setPWM (unsigned int t_frequency_hz, unsigned int t_range, unsigned int t_open) {
 	if (t_frequency_hz > 40000 ) {
 		t_frequency_hz = 40000;
@@ -50,13 +60,6 @@ void GpioPin::setPWM (unsigned int t_frequency_hz, unsigned int t_range, unsigne
 	(this->IGpioInstance).setPWMRange(this->gpioNumber, t_range);
 	(this->IGpioInstance).setPWM(this->gpioNumber, t_open);
 }
-
-void GpioPin::setPWM (unsigned int t_pulseWidth_ns, unsigned int t_frequency_hz) {
-	// the time every period has in ns 
-	int period_ns = 1000000/t_frequency_hz;
-	this->setPWM(t_frequency_hz, period_ns, t_pulseWidth_ns);
-}
-
 // --------------------
 int GpioPin::getPWM (){
 	return (this->IGpioInstance).getPWM(this->gpioNumber);

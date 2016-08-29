@@ -14,8 +14,9 @@ class GpioPin {
 
  	// ---
  	// PWM: (Hz/range: 25 - 40000)
- 	void setPWM (unsigned int t_frequency_hz, unsigned int t_range, unsigned int t_open);
+ 	void setPWM (unsigned int t_open);
  	void setPWM (unsigned int t_pulseWidth_ns, unsigned int t_frequency_hz);
+ 	void setPWM (unsigned int t_frequency_hz, unsigned int t_range, unsigned int t_open);
 
  	int getPWM ();
  	int getPWMrange ();

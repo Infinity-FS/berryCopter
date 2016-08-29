@@ -15,7 +15,7 @@ IGpio::IGpio() {
 // ~GPIO()
 IGpio::~IGpio() {
 	gpioTerminate();
-	std::cout << "IGpio terminated \n";
+	std::cout << "PIGPIO terminated \n";
 }
 
 // --------------------
