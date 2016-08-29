@@ -74,7 +74,7 @@ int GpioPin::getPWMrange (){
 }
 // --------------------
 float GpioPin::getPWMpercentage (){
-	return (float) (this->getPWM() / this->getPWMrange());
+	return  (float) (this->getPWM()) / (float)(this->getPWMrange());
 }
 // --------------------
 int GpioPin::getPWMfrequency (){
