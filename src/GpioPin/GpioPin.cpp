@@ -2,7 +2,7 @@
 
 / --------------------
 // GpioPin constructor
-GpioPin::GpioPin(unsigned int t_gpioNumber, unsigned int t_mode, const IGpio& t_IGPIO) {
+GpioPin::GpioPin(unsigned int t_gpioNumber, unsigned int t_mode, IGpio& t_IGPIO) {
 	this->IGpioInstance = t_IGPIO;
 	this->gpioNumber = t_gpioNumber;
 	(this->IGpioInstance).setMode(this->gpioNumber, t_mode);
