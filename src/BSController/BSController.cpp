@@ -8,10 +8,12 @@ BSController::BSController(unsigned int t_gpioPinNumber, unsigned int t_minPulse
 	maxPulseWidth (t_maxPulseWidth),
 	pwmFrequency(50u) // hz
 {
+	this->setSpeed(0.0f);
 }
 // --------------------
 // BSController destructor
 BSController::~BSController() {
+	this->setSpeed(0.0f);
 }
 // --------------------
 // Speed
