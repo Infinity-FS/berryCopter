@@ -2,6 +2,7 @@
 #define __GPIOPIN_H_INCLUDED__
 
 #include "../IGpio/IGpio.h"
+#include <iostream>
 
 class GpioPin {
  public:
