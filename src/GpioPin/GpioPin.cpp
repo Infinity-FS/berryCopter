@@ -14,7 +14,8 @@ GpioPin::GpioPin(unsigned int t_gpioNumber, unsigned int t_mode, IGpio& t_IGPIO)
 GpioPin::~GpioPin() {
 	// close Pin
 	(this->IGpioInstance).setPWM(this->gpioNumber, 0);
-
+	std::log << "PIN( " << this->gpioNumber << " ) destroyed: " << "\n";
+	this->print();
 }
 // --------------------
 int GpioPin::getMode() {
