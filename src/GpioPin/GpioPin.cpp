@@ -72,7 +72,7 @@ int GpioPin::getPWMrange (){
 }
 // --------------------
 int GpioPin::getPWMpercentage (){
-	return (this->IGpioInstance).getPWMPercentage(this->gpioNumber);
+	return (int) (this->getPWM() / this->getPWMrange());
 }
 // --------------------
 int GpioPin::getPWMfrequency (){
