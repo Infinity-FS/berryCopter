@@ -25,7 +25,7 @@ int GpioPin::getNumber() {
 }
 // --------------------
 // PWM
-void GpioPin::setPWM (unsigned int t_open) {
+void GpioPin::setPWM (int t_open) {
 	unsigned int range = this->getPWMrange();
 
 	if (t_open > range) {
@@ -39,7 +39,7 @@ void GpioPin::setPWM (unsigned int t_open) {
 
 void GpioPin::setPWM (float t_fopenPercentage) {
 	int range = this->getPWMrange();
-	this->setPWM((unsigned int) (t_fopenPercentage * range));
+	this->setPWM((int) (t_fopenPercentage * range));
 }
 
 void GpioPin::setPWM (unsigned int t_pulseWidth_ns, unsigned int t_frequency_hz) {
