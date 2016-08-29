@@ -7,6 +7,7 @@ GpioPin::GpioPin(unsigned int t_gpioNumber, unsigned int t_mode, IGpio& t_IGPIO)
 	gpioNumber(t_gpioNumber)
 {
 	(this->IGpioInstance).setMode(this->gpioNumber, t_mode);
+	(this->IGpioInstance).setPWMFrequency(this->gpioNumber, 1000u);
 }
 // --------------------
 
