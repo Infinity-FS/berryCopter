@@ -6,22 +6,22 @@
 int main () {
 	IGpio gpioInterface;
 	GpioPin pin(17, 1, gpioInterface);
-	std::cout << " pwm " << pin.getPWM() << ", range " << pin.getPWMrange() << ", percentage " << pin.getPWMpercentage() << " freq " << pin.getPWMfrequency() << "\n";
-	
+	pin.print();
+
 	pin.setPWM(1.0f);
-	std::cout << " pwm " << pin.getPWM() << ", range " << pin.getPWMrange() << ", percentage " << pin.getPWMpercentage() << " freq " << pin.getPWMfrequency() << "\n";
+	pin.print();
 
 	pin.setPWM(0.0f);
-	
+	pin.print();
 
 	pin.setPWM(0.5f);
-	std::cout << " pwm " << pin.getPWM() << ", range " << pin.getPWMrange() << ", percentage " << pin.getPWMpercentage() << " freq " << pin.getPWMfrequency() << "\n";
+	pin.print();
 
 	pin.setPWM(100u);
-	std::cout << " pwm " << pin.getPWM() << ", range " << pin.getPWMrange() << ", percentage " << pin.getPWMpercentage() << " freq " << pin.getPWMfrequency() << "\n";
+	pin.print();
 
 	pin.setPWM(1000, 50);
-	std::cout << " pwm " << pin.getPWM() << ", range " << pin.getPWMrange() << ", percentage " << pin.getPWMpercentage() << " freq " << pin.getPWMfrequency() << "\n";
+	pin.print();
 
 	return 0;
 }

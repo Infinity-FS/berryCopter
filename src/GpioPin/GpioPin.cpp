@@ -14,7 +14,7 @@ GpioPin::GpioPin(unsigned int t_gpioNumber, unsigned int t_mode, IGpio& t_IGPIO)
 GpioPin::~GpioPin() {
 	// close Pin
 	(this->IGpioInstance).setPWM(this->gpioNumber, 0);
-	std::log << "PIN( " << this->gpioNumber << " ) destroyed: " << "\n";
+	std::cout << "PIN( " << this->gpioNumber << " ) destroyed: " << "\n";
 	this->print();
 }
 // --------------------
@@ -82,7 +82,7 @@ int GpioPin::getPWMfrequency (){
 }
 // --------------------
 void GpioPin::print(){
-	std::log << "PIN( " << this->gpioNumber << " ) pwm " << this->getPWM() << ", range " << this->getPWMrange() << ", percentage " << this->getPWMpercentage() << " freq " << this->getPWMfrequency() << "\n";
+	std::cout << "PIN( " << this->gpioNumber << " ) pwm " << this->getPWM() << ", range " << this->getPWMrange() << ", percentage " << this->getPWMpercentage() << " freq " << this->getPWMfrequency() << "\n";
 }
 
 
