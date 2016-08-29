@@ -4,6 +4,6 @@
 #include "../GpioPin/GpioPin.h"
 
 int main () {
-	IGpio gpioInterface();
-	GpioPin pin(17, 1, &gpioInterface);
+	IGpio gpioInterface;
+	GpioPin pin(17, 1, gpioInterface);
 }
