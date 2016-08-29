@@ -5,5 +5,5 @@
 
 int main () {
 	IGpio gpioInterface();
-	GpioPin pin(17, 1, gpioInterface);
+	GpioPin pin(17, 1, &gpioInterface);
 }
