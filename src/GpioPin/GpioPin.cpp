@@ -1,10 +1,11 @@
 #include "GpioPin.h"
 
-/ --------------------
+// --------------------
 // GpioPin constructor
-GpioPin::GpioPin(unsigned int t_gpioNumber, unsigned int t_mode, IGpio& t_IGPIO) {
-	this->IGpioInstance = t_IGPIO;
-	this->gpioNumber = t_gpioNumber;
+GpioPin::GpioPin(unsigned int t_gpioNumber, unsigned int t_mode, IGpio& t_IGPIO): 
+	IGpioInstance(t_IGPIO),
+	gpioNumber(t_gpioNumber)
+{
 	(this->IGpioInstance).setMode(this->gpioNumber, t_mode);
 }
 // --------------------
@@ -25,8 +26,7 @@ int GpioPin::getNumber() {
 // --------------------
 // PWM
 void GpioPin::setPWM (unsigned int t_open) {
-	string 
-	int range = (this->IGpioInstance).getPWMRange(this->gpioNumber);
+	int range = this->getPWMrange();
 
 	if (t_open > range) {
 		t_open = range;
@@ -38,6 +38,7 @@ void GpioPin::setPWM (unsigned int t_open) {
 }
 
 void GpioPin::setPWM (float t_fopenPercentage) {
+	int range = this->getPWMrange();
 	this->setPWM((int) (t_fopenPercentage * range));
 }
 
@@ -59,23 +60,23 @@ void GpioPin::setPWMrange (unsigned int t_range) {
 	} else if (t_range > 40000) {
 		t_range = 40000;
 	}
-	(this->IGpioInstance).setRange(this->gpioNumber, t_range);
+	(this->IGpioInstance).setPWMRange(this->gpioNumber, t_range);
 }
 // --------------------
 int GpioPin::getPWM (){
-	return this->IGpioInstance).getPWM(this->gpioNumber);
+	return (this->IGpioInstance).getPWM(this->gpioNumber);
 }
 // --------------------
 int GpioPin::getPWMrange (){
-	return this->IGpioInstance).getPWMRange(this->gpioNumber);
+	return (this->IGpioInstance).getPWMRange(this->gpioNumber);
 }
 // --------------------
 int GpioPin::getPWMrange (){
-	return this->IGpioInstance).getPWMPercentage(this->gpioNumber);
+	return (this->IGpioInstance).getPWMPercentage(this->gpioNumber);
 }
 // --------------------
 int GpioPin::getPWMfrequency (){
-	return this->IGpioInstance).getPWMFrequency(this->gpioNumber);
+	return (this->IGpioInstance).getPWMFrequency(this->gpioNumber);
 }
 // --------------------
 

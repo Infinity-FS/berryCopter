@@ -6,4 +6,6 @@
 int main () {
 	IGpio gpioInterface;
 	GpioPin pin(17, 1, gpioInterface);
+
+	return 0;
 }

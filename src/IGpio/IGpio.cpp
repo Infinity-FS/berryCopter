@@ -24,7 +24,7 @@ int IGpio::setMode(unsigned int t_gpioNb, unsigned int t_mode) {
 }
 
 int IGpio::getMode(unsigned int t_gpioNb) {
-	return gpioSetPWMrange(t_gpioNb, t_range);
+	return gpioGetMode(t_gpioNb);
 }
 
 int IGpio::getRange(unsigned int t_gpioNb) {
@@ -34,7 +34,7 @@ int IGpio::getRange(unsigned int t_gpioNb) {
 // --------------------
 // PWM cycle (0 - range)
 int IGpio::setPWM(unsigned int t_gpioNb, unsigned int t_open) {
-	return gpioPWM(t_gpioNb, t_fopen);
+	return gpioPWM(t_gpioNb, t_open);
 }
 
 int IGpio::getPWM(unsigned int t_gpioNb) {
@@ -46,7 +46,7 @@ int IGpio::setPWMFrequency(unsigned int t_gpioNb, unsigned int t_freq) {
 	return gpioSetPWMfrequency(t_gpioNb, t_freq);
 }
 
-int IGpio::getPWMFrequency(unsigned int t_gpioNb, unsigned int t_freq) {
+int IGpio::getPWMFrequency(unsigned int t_gpioNb) {
 return gpioGetPWMfrequency(t_gpioNb);
 }
 
