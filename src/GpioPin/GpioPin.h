@@ -13,7 +13,7 @@ class GpioPin {
 
  	// ---
  	// PWM 
- 	void setPWM (int t_open);
+ 	void setPWM (unsigned int t_open);
  	void setPWM (float t_openfPercentage);
  	// Hz: 25 - 40000
  	void setPWM (unsigned int t_pulseWidth_ns, unsigned int t_frequency_hz);
