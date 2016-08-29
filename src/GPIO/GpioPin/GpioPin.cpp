@@ -34,7 +34,7 @@ void GpioPin::setPWM (unsigned int t_open) {
 void GpioPin::setPWM (unsigned int t_pulseWidth_ns, unsigned int t_frequency_hz) {
 	// the time every period has in ns 
 	int period_ns = 1000000/t_frequency_hz;
-	this->setPWM(t_frequency_hz, period_ns, t_pulseWidth_ns);
+	this->setPWM (t_frequency_hz, period_ns, t_pulseWidth_ns);
 }
 
 void GpioPin::setPWM (unsigned int t_frequency_hz, unsigned int t_range, unsigned int t_open) {
@@ -80,6 +80,3 @@ float GpioPin::getPWMpercentage (){
 void GpioPin::print(){
 	std::cout << "PIN(" << this->gpioNumber << ") pwm " << this->getPWM() << ", range " << this->getPWMrange() << ", percentage " << this->getPWMpercentage() << " freq " << this->getPWMfrequency() << "\n";
 }
-
-
-

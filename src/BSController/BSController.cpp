@@ -22,6 +22,7 @@ void BSController::setSpeed (float t_speedPercentage) {
 }
 
 float BSController::getSpeed () {
-	return Pin.getPWMpercentage();
+	unsigned int pulseRange = this->maxPulseWidth - this->minPulseWidth;
+	return (float) (Pin.getPWM() - this->minPulseWidth) / (float) (this->maxPulseWidth - this->minPulseWidth);
 }
 // --------------------
