@@ -5,7 +5,7 @@
 
 class GpioPin {
  public:
-	GpioPin(unsigned int t_gpioNumber, unsigned int t_mode, const IGpio& t_IGpio);
+	GpioPin(unsigned int t_gpioNumber, unsigned int t_mode, IGpio& t_IGpio);
 	~GpioPin();
 
 	int getMode();
@@ -26,7 +26,7 @@ class GpioPin {
  	int getPWMfrequency ();
 
  private:
- 	IGpio IGpioInstance;
+ 	IGpio& IGpioInstance;
  	unsigned int gpioNumber;
 };
 

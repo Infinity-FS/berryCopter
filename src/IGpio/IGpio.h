@@ -19,7 +19,7 @@ class IGpio {
 	int getPWMFrequency (unsigned int t_gpioNb);
 
 	int setPWMRange (unsigned int t_gpioNb, unsigned int t_range);
-	int getPWMRange (unsigned int t_gpioNb) {
+	int getPWMRange (unsigned int t_gpioNb);
 };
 
 /*
