@@ -8,16 +8,16 @@ int main () {
 	GpioPin pin(17, 1, gpioInterface);
 	pin.print();
 
-	pin.setPWM(1.0f);
+	pin.setPWM(800u, 100u, 100u);
 	pin.print();
 
-	pin.setPWM(0.0f);
+	pin.setPWM(800u, 100u, 0u);
 	pin.print();
 
-	pin.setPWM(0.5f);
+	pin.setPWM(800u, 100u, 50u);
 	pin.print();
 
-	pin.setPWM(100u);
+	pin.setPWM(800u, pin.getPWMrange(), 60);
 	pin.print();
 
 	pin.setPWM(1000, 50);
