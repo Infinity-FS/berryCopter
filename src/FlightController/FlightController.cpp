@@ -5,6 +5,7 @@
 FlightController::FlightController(IGpioInstance& t_IGPIO):
 	IGpioInstance(t_IGPIO)
 {
+	std::cout<<"FlightController init";
 }
 // --------------------
 // FlightController destructor
