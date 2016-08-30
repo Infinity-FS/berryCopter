@@ -2,7 +2,7 @@
 
 // --------------------
 // FlightController constructor
-FlightController::FlightController(IGpioInstance& t_IGPIO):
+FlightController::FlightController(IGpio& t_IGPIO):
 	IGpioInstance(t_IGPIO)
 {
 	std::cout<<"FlightController init";
