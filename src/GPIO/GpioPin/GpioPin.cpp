@@ -56,9 +56,17 @@ void GpioPin::setPWM (unsigned int t_frequency_hz, unsigned int t_range, unsigne
 		t_open = 0;
 	}
 
-	(this->IGpioInstance).setPWMFrequency(this->gpioNumber, t_frequency_hz);
-	(this->IGpioInstance).setPWMRange(this->gpioNumber, t_range);
-	(this->IGpioInstance).setPWM(this->gpioNumber, t_open);
+	if(t_frequency_hz != (unsigned int) (this->getPWMfrequency())) {
+		(this->IGpioInstance).setPWMFrequency(this->gpioNumber, t_frequency_hz);
+	}
+
+	if(t_range != (unsigned int) (this->getPWMrange())) {
+		(this->IGpioInstance).setPWMRange(this->gpioNumber, t_range);
+	}
+
+	if(t_open != (unsigned int) (this->getPWM())) {
+		(this->IGpioInstance).setPWM(this->gpioNumber, t_open);
+	}
 }
 // --------------------
 int GpioPin::getPWM (){

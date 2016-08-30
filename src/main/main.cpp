@@ -1,16 +1,13 @@
 #include <iostream>
 #include <string>
 #include "../GPIO/IGpio/IGpio.h"
-#include "../BSController/BSController.h"
+#include "../FlightController/FlightController.h"
 
 int main () {
-	IGpio gpioInterface;
-	BSController ctrl_1(14, 1000, 2000, gpioInterface);
+	IGpio IGpioInstance;
 
-	std::cout << ctrl_1.getSpeed() << "\n";
+	FlightController flightCtrl;
+	flightCtrl.programMotors();
 
-	ctrl_1.setSpeed(0.5f);
-
-	std::cout << ctrl_1.getSpeed() << "\n";
 	return 0;
 }

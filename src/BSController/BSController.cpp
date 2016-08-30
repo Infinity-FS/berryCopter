@@ -17,14 +17,18 @@ BSController::~BSController() {
 }
 // --------------------
 // Speed
-void BSController::setSpeed (float t_speedPercentage) {
+void BSController::setSpeed (double t_speedPercentage) {
 	unsigned int pulseRange = this->maxPulseWidth -  this->minPulseWidth;
 	Pin.setPWM(this->minPulseWidth + (unsigned int) (t_speedPercentage * pulseRange), this->pwmFrequency);
 	Pin.print();
 }
 
-float BSController::getSpeed () {
+double BSController::getSpeed () {
 	unsigned int pulseRange = this->maxPulseWidth - this->minPulseWidth;
-	return (float) (Pin.getPWM() - this->minPulseWidth) / (float) pulseRange;
+	return (double) (Pin.getPWM() - this->minPulseWidth) / (double) pulseRange;
+}
+
+int BSController::getSpeedPulseWave_ns () {
+	return Pin.getPWM();
 }
 // --------------------
