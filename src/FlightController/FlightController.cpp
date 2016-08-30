@@ -48,7 +48,7 @@ void FlightController::programMotors() {
 		std::cout<< "\nNegative value: EXIT | Enter speed (0.0 - 1.0): ";
 		std::cin >> inputSpeed;
 		if (inputSpeed >= 0.0) {
-			ctrl_1.setSpeed(double);
+			ctrl_1.setSpeed(inputSpeed);
 		} else {
 			break;
 		}

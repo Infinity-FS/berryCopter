@@ -6,7 +6,7 @@
 int main () {
 	IGpio IGpioInstance;
 
-	FlightController flightCtrl;
+	FlightController flightCtrl (IGpioInstance);
 	flightCtrl.programMotors();
 
 	return 0;
