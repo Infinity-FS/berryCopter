@@ -10,6 +10,7 @@ FlightController::FlightController(IGpio& t_IGPIO):
 // --------------------
 // FlightController destructor
 FlightController::~FlightController() {
+	
 }
 // --------------------
 
