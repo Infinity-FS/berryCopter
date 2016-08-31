@@ -57,14 +57,14 @@ int IGpio::getPWMRange(unsigned int t_gpioNb) {
 }
 // --------------------
 // I2C
-int IGPIO::registerI2CDevice (unsigned int t_busInterface, unsigned int t_addr) {
+int IGpio::registerI2CDevice (unsigned int t_busInterface, unsigned int t_addr) {
 	return i2cOpen(t_busInterface, t_addr, 0);
 }
 
-int IGPIO::unregisterI2CDevice (unsigned int t_deviceHandleID) {
+int IGpio::unregisterI2CDevice (unsigned int t_deviceHandleID) {
 	return i2cClose(t_deviceHandleID);
 }
 
-int IGPIO::readI2CRegister(unsigned int t_deviceHandleID, unsigned int t_RegAddr, char* t_buffer, unsigned int count) {
+int IGpio::readI2CRegister(unsigned int t_deviceHandleID, unsigned int t_RegAddr, char* t_buffer, unsigned int count) {
 	return i2cReadI2CBlockData(t_deviceHandleID, t_RegAddr, t_buffer, count);
 }

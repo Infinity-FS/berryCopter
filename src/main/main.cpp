@@ -14,7 +14,7 @@ int main () {
 
 	char* buffer;
 
-	std::cout << "READ FROM MPU6050: " << MPU6050.readRegister(0x75, buffer, 8) << "\n";
+	std::cout << "READ FROM MPU6050: " << MPU6050.readRegister(0x75, 8, buffer) << "\n";
 	 for (const char* p = buffer; *p; ++p)
     {
         printf("%02x", *p);

@@ -20,7 +20,7 @@ I2CDevice::~I2CDevice() {
 }
 // --------------------
 
-int I2CDevice::readRegister(unsigned int t_regAddr, int byteCount, char* buffer); {
+int I2CDevice::readRegister(unsigned int t_regAddr, unsigned int byteCount, char* buffer) {
 	int readBytesCount = (this->IGpioInstance).readI2CRegister(this->I2CHandleID, t_regAddr, buffer, byteCount);
 	if (readBytesCount == byteCount) {
 		return 1;
