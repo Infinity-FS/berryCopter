@@ -26,7 +26,7 @@ class IGpio {
 	int registerI2CDevice (unsigned int t_busInterface, unsigned int t_addr); // returns Handle_ID
 	int unregisterI2CDevice (unsigned int t_deviceHandleID);
 
-	int readI2CRegister (unsigned int t_deviceHandleID, unsigned int t_RegAddr);
+	int readI2CRegister (unsigned int t_deviceHandleID, unsigned int t_RegAddr, char* t_buffer, unsigned int count);
 };
 
 /*

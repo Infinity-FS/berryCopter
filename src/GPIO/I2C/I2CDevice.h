@@ -2,7 +2,7 @@
 #define __I2CDEVICE_H_INCLUDED__
 
 #include <iostream>
-#include "../GPIO/IGpio/IGpio.h"
+#include "../IGpio/IGpio.h"
 
 class I2CDevice {
  public:

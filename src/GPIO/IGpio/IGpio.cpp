@@ -62,7 +62,7 @@ int IGPIO::registerI2CDevice (unsigned int t_busInterface, unsigned int t_addr) 
 }
 
 int IGPIO::unregisterI2CDevice (unsigned int t_deviceHandleID) {
-	return i2cClose(t_DeviceHandleID);
+	return i2cClose(t_deviceHandleID);
 }
 
 int IGPIO::readI2CRegister(unsigned int t_deviceHandleID, unsigned int t_RegAddr, char* t_buffer, unsigned int count) {
