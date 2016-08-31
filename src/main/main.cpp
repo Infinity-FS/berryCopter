@@ -14,8 +14,7 @@ int main () {
 	I2CDevice MPU6050 (0x68, 1, IGpioInstance);
 
 	char* buffer = new char[8];
-
-	std::cout << "READ FROM MPU6050: " << MPU6050.readRegister(0x75, buffer) << "\n";
+	MPU6050.readRegister(0x75, buffer);
 	 for (const char* p = buffer; *p; ++p)
     {
         printf("%02x", *p);
