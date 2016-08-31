@@ -13,7 +13,7 @@ int main () {
 	//flightCtrl.programMotors();
 	I2CDevice MPU6050 (0x68, 1, IGpioInstance);
 
-	char* buffer;
+	char* buffer = new char[8];
 
 	std::cout << "READ FROM MPU6050: " << MPU6050.readRegister(0x75, 8, buffer) << "\n";
 	 for (const char* p = buffer; *p; ++p)
