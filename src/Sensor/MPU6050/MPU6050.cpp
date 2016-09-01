@@ -14,6 +14,9 @@ MPU6050::~MPU6050 () {
 
 void MPU6050::reset () {
 	char* hex_00 = { 0x00 };
+	if(hex_00 == NULL){
+		std::cout <<"hex_00 is NULL\n";
+	}
 	I2CDevice::writeRegister(MPU6050_PWR_MGMT_1, hex_00, 1);
 }
 // --------------------
