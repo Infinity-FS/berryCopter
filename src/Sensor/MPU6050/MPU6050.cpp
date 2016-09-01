@@ -19,13 +19,15 @@ void MPU6050::reset () {
 // --------------------
 
 void MPU6050::startLoop() {
-	char* lastValue = new char[1]();
+	char* lastValue = { 0x00 };
 	char* value = new char[1]();
 	for(;;) {
 		I2CDevice::readRegister(0x75, value, 1);
-		if (*lastValue != *value) {
+		if (value && *lastValue != *value) {
 			lastValue = value;
 			printf("%02x ", *lastValue);
+		} else {
+			printf("Val is NULL");
 		}
 	}
 	
