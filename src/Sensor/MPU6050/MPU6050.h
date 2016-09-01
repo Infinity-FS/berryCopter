@@ -1,10 +1,11 @@
 #ifndef __MPU6050_H_INCLUDED__
 #define __MPU6050_H_INCLUDED__
 
-#include <pigpio.h>
 #include <iostream>
 #include "../../GPIO/I2C/I2CDevice.h"
 #include "../../GPIO/IGpio/IGpio.h"
+#include <stdio.h>
+#include <string>
 
 #define MPU_addr_0          0x68
 #define MPU_addr_1          0x69
