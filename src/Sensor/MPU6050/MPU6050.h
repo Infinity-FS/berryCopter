@@ -103,7 +103,7 @@
 
 class MPU6050 : public  I2CDevice {
  public:
-	MPU6050();
+	MPU6050(IGpio& t_IGpioInstance);
 	~MPU6050();
 
 	void reset ();
