@@ -2,7 +2,7 @@
 
 // --------------------
 // FlightController constructor
-MPU6050::MPU6050 (IGpio t_IGpioInstance): 
+MPU6050::MPU6050 (IGpio& t_IGpioInstance): 
 	I2CDevice (0x68, 1, t_IGpioInstance)
 {
 }
