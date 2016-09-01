@@ -21,11 +21,14 @@ void MPU6050::reset () {
 void MPU6050::startLoop() {
 	char lastValue[] = { 0x00 };
 	char value[] = { 0x00 };
+	char* p_value = value;
+	char* p_lastValue = lastValue;
+
 	for(;;) {
-		I2CDevice::readRegister(0x75, value, 1);
-		if (*lastValue != *value) {
-			lastValue = value;
-			printf("%02x ", *lastValue);
+		I2CDevice::readRegister(0x75, p_value, 1);
+		if (*p_lastValue != *p_value) {
+			p_lastValue = p_value;
+			printf("%02x ", *p_lastValue);
 		}
 	}
 	
