@@ -13,24 +13,19 @@ MPU6050::~MPU6050 () {
 // --------------------
 
 void MPU6050::reset () {
-	char* hex_00 = { 0x00 };
-	if(hex_00 == NULL){
-		std::cout <<"hex_00 is NULL\n";
-	}
+	char hex_00[] = { 0x00 };
 	I2CDevice::writeRegister(MPU6050_PWR_MGMT_1, hex_00, 1);
 }
 // --------------------
 
 void MPU6050::startLoop() {
-	char* lastValue = { 0x00 };
-	char* value = { 0x00 };
+	char lastValue[] = { 0x00 };
+	char value[] = { 0x00 };
 	for(;;) {
 		I2CDevice::readRegister(0x75, value, 1);
 		if (*lastValue != *value) {
 			lastValue = value;
 			printf("%02x ", *lastValue);
-		} else {
-			printf("Val is NULL");
 		}
 	}
 	
