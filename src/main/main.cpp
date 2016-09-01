@@ -12,7 +12,7 @@ int main () {
 	FlightController flightCtrl (IGpioInstance);
 	//flightCtrl.programMotors();
 	MPU6050 mpu6050 (IGpioInstance);
-
+	mpu6050.reset();
 	mpu6050.startLoop();
 	return 0;
 }
