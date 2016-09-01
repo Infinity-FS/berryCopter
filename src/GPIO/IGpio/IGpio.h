@@ -26,7 +26,11 @@ class IGpio {
 	int registerI2CDevice (unsigned int t_busInterface, unsigned int t_addr); // returns Handle_ID
 	int unregisterI2CDevice (unsigned int t_deviceHandleID);
 
+	// S Addr Wr [A] i2cReg [A] S Addr Rd [A] [buf0] A [buf1] A ... A [bufn] NA P
 	int readI2CRegister (unsigned int t_deviceHandleID, unsigned int t_RegAddr, char* t_buffer, unsigned int count);
+
+	// S Addr Wr [A] i2cReg [A] buf0 [A] buf1 [A] ... [A] bufn [A] P
+	int writeI2CRegister (unsigned int t_deviceHandleID, unsigned int t_RegAddr, char* t_val, unsigned int count);
 };
 
 /*
@@ -48,6 +52,20 @@ Pin Types
 
 Pin modes:
 	PI_INPUT 0; PI_OUTPUT 1;
+
+I2C:
+	S      (1 bit) : Start bit
+	P      (1 bit) : Stop bit
+	Rd/Wr  (1 bit) : Read/Write bit. Rd equals 1, Wr equals 0.
+	A, NA  (1 bit) : Accept and not accept bit.
+
+	Addr   (7 bits): I2C 7 bit address.
+	i2cReg (8 bits): Command byte, a byte which often selects a register.
+	Data   (8 bits): A data byte.
+	Count  (8 bits): A byte defining the length of a block operation.
+
+[..]: Data sent by the device.
+
 */
 
 #endif // __IGPIO_H_INCLUDED__
