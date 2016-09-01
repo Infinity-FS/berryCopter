@@ -22,7 +22,7 @@ void MPU6050::startLoop() {
 	char* lastValue = new char[1]();
 	char* value = new char[1]();
 	for(;;) {
-		I2CDevice::readRegister(0x75, value);
+		I2CDevice::readRegister(0x75, value, 1);
 		if (*lastValue != *value) {
 			lastValue = value;
 			printf("%02x ", *lastValue);
