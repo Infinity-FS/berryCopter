@@ -29,9 +29,7 @@ void MPU6050::startLoop() {
 		std::cin >> reg;
 		I2CDevice::readRegister(reg, p_val);
 		//if (*p_lastValue != *p_value) {
-			p_lastVal = p_val;
-			std::cout<< reg << " = ";
-			printf("%02x ", *p_lastVal);
+			//p_lastVal = p_val;
 		//}
 	}
 	
