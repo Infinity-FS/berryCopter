@@ -9,8 +9,8 @@ class I2CDevice {
 	I2CDevice(unsigned int t_I2CAddr, unsigned int t_busInterfaceId, IGpio& t_IGpioInstance); 
 	~I2CDevice();
 
-	int readRegister(unsigned int t_regAddr, char* t_buffer, unsigned int t_byteCount);
-	int writeRegister(unsigned int t_regAddr, char* t_val, unsigned int t_byteCount);
+	int readRegister(unsigned int t_regAddr, unsigned int* t_byte);
+	int writeRegister(unsigned int t_regAddr,unsigned int* t_byte);
 
  protected:
  	unsigned int I2CHandleID, I2CAddr;

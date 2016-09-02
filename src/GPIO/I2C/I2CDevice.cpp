@@ -20,19 +20,15 @@ I2CDevice::~I2CDevice() {
 }
 // --------------------
 
-int I2CDevice::readRegister(unsigned int t_regAddr, char* t_buffer, unsigned int t_byteCount) {
-	int readBytesCount = (this->IGpioInstance).readI2CRegister(this->I2CHandleID, t_regAddr, t_buffer, t_byteCount);
-	std::cout << "I2C READ " << readBytesCount  << " / " << t_byteCount << " B from register " << t_regAddr << " deviceAddr: " << this->I2CAddr << " I2CHandleId: " << this->I2CHandleID <<  "\n";
-	if ((unsigned int) readBytesCount == t_byteCount) {
-		return 1;
-	} else {
-		return 0;
-	}
+int I2CDevice::readRegister(unsigned int t_regAddr, unsigned int* t_byte) {
+	int readByte = (this->IGpioInstance).readI2CRegister(this->I2CHandleID, t_regAddr, t_buffer);
+	//std::cout << "I2C READ " << readBytesCount  << " / " << t_byteCount << " B from register " << t_regAddr << " deviceAddr: " << this->I2CAddr << " I2CHandleId: " << this->I2CHandleID <<  "\n";
+	t_byte = &readByte;
 }
 
-int I2CDevice::writeRegister(unsigned int t_regAddr, char* t_val, unsigned int t_byteCount) {
-	int result = (this->IGpioInstance).readI2CRegister(this->I2CHandleID, t_regAddr, t_val, t_byteCount);
-	std::cout << "I2C WRITE " << t_byteCount << " B to register " << t_regAddr << " deviceAddr: " << this->I2CAddr << " I2CHandleId: " << this->I2CHandleID <<  "\n";
+int I2CDevice::writeRegister(unsigned int t_regAddr, unsigned int* t_byte) {
+	int result = (this->IGpioInstance).readI2CRegister(this->I2CHandleID, t_regAddr, t_val);
+	//std::cout << "I2C WRITE " << t_byteCount << " B to register " << t_regAddr << " deviceAddr: " << this->I2CAddr << " I2CHandleId: " << this->I2CHandleID <<  "\n";
 	if (result == 0) {
 		return 1;
 	} else {

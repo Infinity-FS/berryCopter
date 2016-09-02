@@ -65,10 +65,10 @@ int IGpio::unregisterI2CDevice (unsigned int t_deviceHandleID) {
 	return i2cClose(t_deviceHandleID);
 }
 
-int IGpio::readI2CRegister(unsigned int t_deviceHandleID, unsigned int t_RegAddr, char* t_buffer, unsigned int count) {
-	return i2cReadI2CBlockData(t_deviceHandleID, t_RegAddr, t_buffer, count);
+int IGpio::readI2CRegisterByte (unsigned int t_deviceHandleID, unsigned int t_RegAddr) {
+	return i2cReadByteData(t_deviceHandleID, t_RegAddr);
 }
 
-int IGpio::writeI2CRegister(unsigned int t_deviceHandleID, unsigned int t_RegAddr, char* t_val, unsigned int count) {
-	return i2cWriteI2CBlockData(t_deviceHandleID, t_RegAddr, t_val, count);
+int IGpio::writeI2CRegisterByte (unsigned int t_deviceHandleID, unsigned int t_RegAddr, unsigned int t_byte) {
+	return i2cWriteByteData(t_deviceHandleID, t_RegAddr, t_byte);
 }

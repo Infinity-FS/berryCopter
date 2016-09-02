@@ -13,23 +13,25 @@ MPU6050::~MPU6050 () {
 // --------------------
 
 void MPU6050::reset () {
-	char hex_reset[] = { 0x80 }; // 10000000
-	I2CDevice::writeRegister(MPU6050_PWR_MGMT_1, hex_reset, 1);
+	I2CDevice::writeRegister(MPU6050_PWR_MGMT_1, 0b10000000);
 }
 // --------------------
 
 void MPU6050::startLoop() {
-	char lastValue[] = { 0x00 };
-	char value[] = { 0x00 };
-	char* p_value = value;
-	char* p_lastValue = lastValue;
+	int tmp = 0;
+	unsigned int* val = &tmp;
+	unsigned int* lastVal = &tmp;
 
-	//for(;;) {
-		I2CDevice::readRegister(MPU6050_PWR_MGMT_1, p_value, 1);
-		if (*p_lastValue != *p_value) {
-			p_lastValue = p_value;
-			printf("%02x ", *p_lastValue);
-		}
-	//}
+	unsigned int reg = 00;
+
+	for(;;) {
+		std::cin >> reg;
+		I2CDevice::readRegister(reg, ,val);
+		//if (*p_lastValue != *p_value) {
+			lastVal = val;
+			std::cout<< reg << " = ";
+			printf("%02x ", *lastVal);
+		//}
+	}
 	
 }
