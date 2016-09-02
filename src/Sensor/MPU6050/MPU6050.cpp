@@ -13,8 +13,8 @@ MPU6050::~MPU6050 () {
 // --------------------
 
 void MPU6050::reset () {
-	char hex_00[] = { 0x00 };
-	I2CDevice::writeRegister(MPU6050_PWR_MGMT_1, hex_00, 1);
+	char hex_reset[] = { 0x80 }; // 10000000
+	I2CDevice::writeRegister(MPU6050_PWR_MGMT_1, hex_reset, 1);
 }
 // --------------------
 
@@ -24,12 +24,12 @@ void MPU6050::startLoop() {
 	char* p_value = value;
 	char* p_lastValue = lastValue;
 
-	for(;;) {
-		I2CDevice::readRegister(0x75, p_value, 1);
+	//for(;;) {
+		I2CDevice::readRegister(MPU6050_PWR_MGMT_1, p_value, 1);
 		if (*p_lastValue != *p_value) {
 			p_lastValue = p_value;
 			printf("%02x ", *p_lastValue);
 		}
-	}
+	//}
 	
 }
