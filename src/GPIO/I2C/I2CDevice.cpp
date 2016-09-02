@@ -21,13 +21,13 @@ I2CDevice::~I2CDevice() {
 // --------------------
 
 int I2CDevice::readRegister(unsigned int t_regAddr, unsigned int* t_byte) {
-	int readByte = (this->IGpioInstance).readI2CRegister(this->I2CHandleID, t_regAddr, t_buffer);
+	unsinged int readByte = (this->IGpioInstance).readI2CRegisterByte(this->I2CHandleID, t_regAddr, t_buffer);
 	//std::cout << "I2C READ " << readBytesCount  << " / " << t_byteCount << " B from register " << t_regAddr << " deviceAddr: " << this->I2CAddr << " I2CHandleId: " << this->I2CHandleID <<  "\n";
 	t_byte = &readByte;
 }
 
 int I2CDevice::writeRegister(unsigned int t_regAddr, unsigned int* t_byte) {
-	int result = (this->IGpioInstance).readI2CRegister(this->I2CHandleID, t_regAddr, t_val);
+	int result = (this->IGpioInstance).readI2CRegisterByte(this->I2CHandleID, t_regAddr, t_val);
 	//std::cout << "I2C WRITE " << t_byteCount << " B to register " << t_regAddr << " deviceAddr: " << this->I2CAddr << " I2CHandleId: " << this->I2CHandleID <<  "\n";
 	if (result == 0) {
 		return 1;
