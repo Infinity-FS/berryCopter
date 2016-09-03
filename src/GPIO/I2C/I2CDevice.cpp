@@ -27,6 +27,7 @@ int I2CDevice::readRegister(unsigned int t_regAddr, unsigned int* t_byte) {
 }
 
 int I2CDevice::readRegister(unsigned int t_regAddr[], unsigned int t_byte[], int t_size) {
+	int i;
 	for (i = 0; i < size; ++i) {
 		this->readRegister(t_regAddr[i], &t_byte[i]);
 	}

@@ -12,7 +12,7 @@ MPU6050::~MPU6050 () {
 }
 // --------------------
 
-void MPU6050::reset () {
+void MPU6050::wakeUp () {
 	unsigned int wakeUp = 0b00000000;
 	I2CDevice::writeRegister(MPU6050_PWR_MGMT_1, &wakeUp);
 }

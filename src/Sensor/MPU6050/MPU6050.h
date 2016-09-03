@@ -102,24 +102,24 @@
 #define MPU6050_WHO_AM_I           0x75   // R
 
 
-struct {
+struct axisData {
 	short X;
 	short Y;
 	short Z;
-} axisData;
+};
 
 class MPU6050 : public  I2CDevice {
  public:
 	MPU6050(IGpio& t_IGpioInstance);
 	~MPU6050();
 
-	void reset ();
+	void wakeUp ();
 	void startLoop();
  private:
  	axisData gyroData;
  	axisData acceleratorData;
 
- 	void readGyroData();
+ 	void readSensorData();
 };
 
 #endif // __MPU6050_H_INCLUDED__
