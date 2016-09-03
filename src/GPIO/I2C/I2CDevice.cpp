@@ -22,7 +22,7 @@ I2CDevice::~I2CDevice() {
 
 int I2CDevice::readRegister(unsigned int t_regAddr, unsigned int* t_byte) {
 	unsigned int readByte = (this->IGpioInstance).readI2CRegisterByte(this->I2CHandleID, t_regAddr);
-	std::cout << readByte << "\n";
+	//std::cout << readByte << "\n";
 	*t_byte = readByte;
 	return 1;
 }
