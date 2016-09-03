@@ -45,7 +45,7 @@ void MPU6050::readSensorData () {
 	(this->acceleratorData).Y = parseToShort((char) result[8], (char) result[9]);
 	(this->acceleratorData).Z = parseToShort((char) result[10], (char) result[11]);
 
-	std::cout << "Gyro X: " << (this->gyroData).X << " Y: " (this->gyroData).Y << " Z: " (this->gyroData).Z;
-	std::cout << "Acc X: " << (this->acceleratorData).X << " Y: " (this->acceleratorData).Y << " Z: " (this->acceleratorData).Z;
+	std::cout << "Gyro X: " << (this->gyroData).X << " Y: " << (this->gyroData).Y << " Z: " (this->gyroData).Z;
+	std::cout << "Acc X: " << (this->acceleratorData).X << " Y: "  << (this->acceleratorData).Y << " Z: " (this->acceleratorData).Z;
 	std::cout << "\n";
 }
