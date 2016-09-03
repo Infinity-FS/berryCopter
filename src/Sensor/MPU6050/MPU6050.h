@@ -4,6 +4,7 @@
 #include <iostream>
 #include "../../GPIO/I2C/I2CDevice.h"
 #include "../../GPIO/IGpio/IGpio.h"
+#include "../../helper/parseHelper.h"
 #include <stdio.h>
 #include <string>
 
@@ -101,6 +102,11 @@
 #define MPU6050_WHO_AM_I           0x75   // R
 
 
+struct {
+	short X;
+	short Y;
+	short Z;
+} axisData;
 
 class MPU6050 : public  I2CDevice {
  public:
@@ -109,6 +115,11 @@ class MPU6050 : public  I2CDevice {
 
 	void reset ();
 	void startLoop();
+ private:
+ 	axisData gyroData;
+ 	axisData acceleratorData;
+
+ 	void readGyroData();
 };
 
 #endif // __MPU6050_H_INCLUDED__
