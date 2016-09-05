@@ -44,13 +44,11 @@ void MPU6050::calibrate() {
 
 	int trial = 0;
 	while(true) {
+		trial++;
 
 		if(trial % 100 == 0){
 			std::cout<<"100 corrections performed\n";
 		}
-
-		trial++;
-
 
 		this->writeGyroOffset(tmp_gyroOffset);
 		this->writeAccelOffset(tmp_accelOffset);
@@ -178,6 +176,7 @@ void MPU6050::read () {
 // --------------------
 
 void MPU6050::writeGyroOffset(axisData& t_gyroMean){
+	std::cout<<t_gyroMean<<"\n";
 	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (unsigned int) ((t_gyroMean.X >> 8) & 0xff) );
 	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (unsigned int) (t_gyroMean.X & 0xff) );
 
