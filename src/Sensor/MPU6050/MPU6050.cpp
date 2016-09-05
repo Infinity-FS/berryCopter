@@ -55,9 +55,7 @@ void MPU6050::calibrate() {
 	while(true) {
 		trial++;
 
-		if(trial % 100 == 0){
-			std::cout<<"100 corrections performed\n";
-		}
+		std::cout<<"...\n";
 
 		this->writeGyroOffset(tmp_gyroOffset);
 		this->writeAccelOffset(tmp_accelOffset);
