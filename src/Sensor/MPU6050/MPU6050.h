@@ -2,18 +2,33 @@
 #define __MPU6050_H_INCLUDED__
 
 #include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
+#include <unistd.h>
 #include "../../GPIO/I2C/I2CDevice.h"
 #include "../../GPIO/IGpio/IGpio.h"
 #include "../../helper/parseHelper.h"
-#include <stdio.h>
-#include <string>
+
 
 #define MPU_addr_0          0x68
 #define MPU_addr_1          0x69
 
-// Register names according to the datasheet.
-// "MPU-6000 and MPU-6050 Register Map
-#define MPU6050_AUX_VDDIO          0x01   // R/W 
+// Register names according to the datasheet. 
+// _H: [15:8], _L: [7:0]
+#define MPU6050_AUX_VDDIO          0x01   // R/W
+#define MPU6050_ACCEL_XOFFS_USR_H  0x06   // R/W USR DEFINED
+#define MPU6050_ACCEL_XOFFS_USR_L  0x07   // R/W USR DEFINED
+#define MPU6050_ACCEL_YOFFS_USR_H  0x08   // R/W USR DEFINED
+#define MPU6050_ACCEL_YOFFS_USR_L  0x09   // R/W USR DEFINED
+#define MPU6050_ACCEL_ZOFFS_USR_H  0x0A   // R/W USR DEFINED
+#define MPU6050_ACCEL_ZOFFS_USR_L  0x0B   // R/W USR DEFINED
+#define MPU6050_GYRO_XOFFS_USR_H   0x13   // R/W USR DEFINED
+#define MPU6050_GYRO_XOFFS_USR_L   0x14   // R/W USR DEFINED
+#define MPU6050_GYRO_YOFFS_USR_H   0x15   // R/W USR DEFINED
+#define MPU6050_GYRO_YOFFS_USR_L   0x16   // R/W USR DEFINED
+#define MPU6050_GYRO_ZOFFS_USR_H   0x17   // R/W USR DEFINED
+#define MPU6050_GYRO_ZOFFS_USR_L   0x18   // R/W USR DEFINED
 #define MPU6050_SMPLRT_DIV         0x19   // R/W
 #define MPU6050_CONFIG             0x1A   // R/W
 #define MPU6050_GYRO_CONFIG        0x1B   // R/W
@@ -101,6 +116,10 @@
 #define MPU6050_FIFO_R_W           0x74   // R/W
 #define MPU6050_WHO_AM_I           0x75   // R
 
+// config Values
+#define MPU6050_C_AccelRange       2 	// +- 2 g
+#define MPU6050_C_GyroRange        250  // +- 250 deg/sec
+
 
 struct axisData {
 	short X;
@@ -115,11 +134,18 @@ class MPU6050 : public  I2CDevice {
 
 	void wakeUp ();
 	void startLoop();
+
+
+	void calibrate();
+
  private:
  	axisData gyroData;
  	axisData acceleratorData;
 
- 	void readSensorData();
+ 	void read();
+
+ 	void writeGyroOffset(axisData t_gyroMean, int t_maxError);
+ 	void writeAccelOffset(axisData t_accelMean, int t_maxError);
 };
 
 #endif // __MPU6050_H_INCLUDED__

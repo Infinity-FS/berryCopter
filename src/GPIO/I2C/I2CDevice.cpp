@@ -35,8 +35,8 @@ int I2CDevice::readRegister(unsigned int t_regAddr[], unsigned int t_byte[], int
 	return 1;
 }
 
-int I2CDevice::writeRegister(unsigned int t_regAddr, unsigned int* t_byte) {
-	int result = (this->IGpioInstance).writeI2CRegisterByte(this->I2CHandleID, t_regAddr, *t_byte);
+int I2CDevice::writeRegister(unsigned int t_regAddr, unsigned int t_byte) {
+	int result = (this->IGpioInstance).writeI2CRegisterByte(this->I2CHandleID, t_regAddr, t_byte);
 	if (result == 0) {
 		return 1;
 	} else {

@@ -11,7 +11,7 @@ class I2CDevice {
 	~I2CDevice();
 
 	int readRegister(unsigned int t_regAddr, unsigned int* t_byte);
-	int writeRegister(unsigned int t_regAddr,unsigned int* t_byte);
+	int writeRegister(unsigned int t_regAddr,unsigned int t_byte);
 
 	int readRegister(unsigned int t_regAddr[], unsigned int t_byte[], int t_size);
 
