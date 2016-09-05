@@ -177,26 +177,26 @@ void MPU6050::read () {
 // --------------------
 
 void MPU6050::writeGyroOffset(axisData& t_gyroMean) {
-	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (char) ((t_gyroMean.X >> 8)) );
-	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (char) (t_gyroMean.X) );
+	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (unsigned int) ((t_gyroMean.X >> 8) & 0xff) );
+	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (unsigned int) (t_gyroMean.X & 0xff) );
 
-	I2CDevice::writeRegister(MPU6050_GYRO_YOFFS_USR_H, (char) ((t_gyroMean.Y >> 8)) );
-	I2CDevice::writeRegister(MPU6050_GYRO_YOFFS_USR_H, (char) (t_gyroMean.Y) );
+	I2CDevice::writeRegister(MPU6050_GYRO_YOFFS_USR_H, (unsigned int) ((t_gyroMean.Y >> 8) & 0xff) );
+	I2CDevice::writeRegister(MPU6050_GYRO_YOFFS_USR_H, (unsigned int) (t_gyroMean.Y & 0xff) );
 
-	I2CDevice::writeRegister(MPU6050_GYRO_ZOFFS_USR_H, (char) ((t_gyroMean.Z >> 8)) );
-	I2CDevice::writeRegister(MPU6050_GYRO_ZOFFS_USR_H, (char) (t_gyroMean.Z) );
+	I2CDevice::writeRegister(MPU6050_GYRO_ZOFFS_USR_H, (unsigned int) ((t_gyroMean.Z >> 8) & 0xff) );
+	I2CDevice::writeRegister(MPU6050_GYRO_ZOFFS_USR_H, (unsigned int) (t_gyroMean.Z & 0xff) );
 }
 
 // --------------------
 void MPU6050::writeAccelOffset(axisData& t_accelMean) {
-	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_H, (char) ((t_accelMean.X >> 8)) );
-	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_L, (char) (t_accelMean.X) );
+	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_H, (unsigned int) ((t_accelMean.X >> 8) & 0xff) );
+	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_L, (unsigned int) (t_accelMean.X & 0xff) );
 
-	I2CDevice::writeRegister(MPU6050_ACCEL_YOFFS_USR_H, (char) ((t_accelMean.Y >> 8)) );
-	I2CDevice::writeRegister(MPU6050_ACCEL_YOFFS_USR_L, (char) (t_accelMean.Y) );
+	I2CDevice::writeRegister(MPU6050_ACCEL_YOFFS_USR_H, (unsigned int) ((t_accelMean.Y >> 8) & 0xff) );
+	I2CDevice::writeRegister(MPU6050_ACCEL_YOFFS_USR_L, (unsigned int) (t_accelMean.Y & 0xff) );
 
-	I2CDevice::writeRegister(MPU6050_ACCEL_ZOFFS_USR_H, (char) ((t_accelMean.Z >> 8)) );
-	I2CDevice::writeRegister(MPU6050_ACCEL_ZOFFS_USR_L, (char) (t_accelMean.Z) );
+	I2CDevice::writeRegister(MPU6050_ACCEL_ZOFFS_USR_H, (unsigned int) ((t_accelMean.Z >> 8) & 0xff) );
+	I2CDevice::writeRegister(MPU6050_ACCEL_ZOFFS_USR_L, (unsigned int) (t_accelMean.Z & 0xff) );
 }
 
 
