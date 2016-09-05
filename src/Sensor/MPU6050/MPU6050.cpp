@@ -173,9 +173,6 @@ void MPU6050::read () {
 	//std::cout << "Acc X: " << (this->acceleratorData).X << " Y: "  << (this->acceleratorData).Y << " Z: " << (this->acceleratorData).Z;
 	//std::cout << "\n";
 }
-
-// --------------------
-
 void MPU6050::writeGyroOffset(axisData& t_gyroMean) {
 	axisData tmp_offset;
 	tmp_offset.X = -t_gyroMean.X / 4;
@@ -189,8 +186,6 @@ void MPU6050::writeGyroOffset(axisData& t_gyroMean) {
 	I2CDevice::writeRegister(MPU6050_GYRO_ZOFFS_USR_H, (char) ((t_gyroMean.Z >> 8) & 0xff) );
 	I2CDevice::writeRegister(MPU6050_GYRO_ZOFFS_USR_H, (char) (t_gyroMean.Z & 0xff) );
 }
-
-// --------------------
 void MPU6050::writeAccelOffset(axisData& t_accelMean) {
 	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_H, (char) ((t_accelMean.X >> 8) & 0xff) );
 	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_L, (char) (t_accelMean.X & 0xff) );
