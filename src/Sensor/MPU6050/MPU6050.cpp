@@ -9,6 +9,8 @@ MPU6050::MPU6050 (IGpio& t_IGpioInstance):
 // --------------------
 // FlightController destructor
 MPU6050::~MPU6050 () {
+	gyroData = {0,0,0,0,0,0};
+	acceleratorData = {0,0,0,0,0,0};
 }
 // --------------------
 
@@ -38,7 +40,8 @@ void MPU6050::calibrate() {
 	unsigned int maxAccelError = 8;
 	unsigned int maxGyroError = 4;
 
-	axisData tmp_gyroOffset, tmp_accelOffset;
+	axisData tmp_gyroOffset = {0,0,0,0,0,0};
+	axisData tmp_accelOffset = {0,0,0,0,0,0};
 
 
 	int trial = 0;
@@ -54,7 +57,8 @@ void MPU6050::calibrate() {
 		this->writeGyroOffset(tmp_gyroOffset);
 		this->writeAccelOffset(tmp_accelOffset);
 
-		axisData tmp_gyroMean, tmp_accelMean;
+		axisData tmp_gyroMean = {0,0,0,0,0,0};
+		axisData tmp_accelMean = {0,0,0,0,0,0};
 
 		unsigned int i;
 		for(i=0; i<iterations; i++) {
@@ -176,7 +180,7 @@ void MPU6050::read () {
 
 // --------------------
 
-void MPU6050::writeGyroOffset(axisData& t_gyroMean){
+void MPU6050::writeGyroOffset(const axisData& t_gyroMean){
 	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (unsigned int) ((t_gyroMean.X >> 8) & 0xff) );
 	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (unsigned int) (t_gyroMean.X & 0xff) );
 
