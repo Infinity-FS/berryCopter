@@ -176,7 +176,7 @@ void MPU6050::read () {
 
 // --------------------
 
-void MPU6050::writeGyroOffset(axisData& t_gyroMean) {
+void MPU6050::writeGyroOffset(axisData& t_gyroMean){
 	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (unsigned int) ((t_gyroMean.X >> 8) & 0xff) );
 	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (unsigned int) (t_gyroMean.X & 0xff) );
 
@@ -188,7 +188,7 @@ void MPU6050::writeGyroOffset(axisData& t_gyroMean) {
 }
 
 // --------------------
-void MPU6050::writeAccelOffset(axisData& t_accelMean) {
+void MPU6050::writeAccelOffset(axisData& t_accelMean){
 	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_H, (unsigned int) ((t_accelMean.X >> 8) & 0xff) );
 	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_L, (unsigned int) (t_accelMean.X & 0xff) );
 
