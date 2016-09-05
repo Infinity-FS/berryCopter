@@ -28,6 +28,15 @@ void MPU6050::wakeUp () {
 void MPU6050::startLoop() {
 	for(;;){
 		this->read();
+		std::cout<< "Gyro: ";
+			std::cout << "X "<< (this->gyroData).X << ", ";
+			std::cout << "Y "<< (this->gyroData).Y << ", ";
+			std::cout << "Z "<< (this->gyroData).Z << "  ";
+
+			std::cout<< "Accel: ";
+			std::cout << "X "<< (this->acceleratorData).X << ", ";
+			std::cout << "Y "<< (this->acceleratorData).Y << ", ";
+			std::cout << "Z "<< (this->acceleratorData).Z << "\n";
 	}
 }
 
