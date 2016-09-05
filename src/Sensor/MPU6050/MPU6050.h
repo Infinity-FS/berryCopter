@@ -123,7 +123,7 @@
 
 struct axisData {
 	short X, Y, Z;
-	axisData: X(0), Y(0), Z(0) {}
+	axisData(): X(0), Y(0), Z(0) {}
 };
 
 class MPU6050 : public  I2CDevice {
