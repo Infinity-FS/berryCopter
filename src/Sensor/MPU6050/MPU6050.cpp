@@ -87,38 +87,38 @@ void MPU6050::calibrate() {
 		int axisComplete = 0;
 
 		// gyro axis X, Y, Z
-		if (abs(tmp_gyroMean.X) <= maxGyroError) {
+		if (abs(tmp_gyroMean.X) > maxGyroError) {
 			tmp_gyroOffset.X -= tmp_gyroMean.X / (maxGyroError);
 		} else {
 			axisComplete++;
 		}
 
-		if (abs(tmp_gyroMean.Y) <= maxGyroError) {
+		if (abs(tmp_gyroMean.Y) > maxGyroError) {
 			tmp_gyroOffset.Y -= tmp_gyroMean.Y / (maxGyroError);
 		} else {
 			axisComplete++;
 		}
 
-		if (abs(tmp_gyroMean.Z) <= maxGyroError) {
+		if (abs(tmp_gyroMean.Z) > maxGyroError) {
 			tmp_gyroOffset.Z -= tmp_gyroMean.Z / (maxGyroError);
 		} else {
 			axisComplete++;
 		}
 
 		// accel axis X, Y, Z
-		if (abs(tmp_accelMean.X) <= maxAccelError) {
+		if (abs(tmp_accelMean.X) > maxAccelError) {
 			tmp_accelOffset.X -= tmp_accelMean.X / (maxAccelError);
 		} else {
 			axisComplete++;
 		}
 
-		if (abs(tmp_accelMean.Y) <= maxAccelError) {
+		if (abs(tmp_accelMean.Y) > maxAccelError) {
 			tmp_accelOffset.Y -= tmp_accelMean.Y / (maxAccelError);
 		} else {
 			axisComplete++;
 		}
 
-		if (abs(tmp_accelMean.Z) <= maxAccelError) {
+		if (abs(tmp_accelMean.Z) > maxAccelError) {
 			tmp_accelOffset.Z -= tmp_accelMean.Z / (maxAccelError);
 		} else {
 			axisComplete++;
@@ -175,28 +175,27 @@ void MPU6050::read () {
 
 // --------------------
 
-void MPU6050::writeGyroOffset(axisData& t_gyroMean){
-	std::cout<<t_gyroMean<<"\n";
-	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (unsigned int) ((t_gyroMean.X >> 8) & 0xff) );
-	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (unsigned int) (t_gyroMean.X & 0xff) );
+void MPU6050::writeGyroOffset(axisData& t_gyroOffset){
+	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (unsigned int) ((t_gyroOffset.X >> 8) & 0xff) );
+	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (unsigned int) (t_gyroOffset.X & 0xff) );
 
-	I2CDevice::writeRegister(MPU6050_GYRO_YOFFS_USR_H, (unsigned int) ((t_gyroMean.Y >> 8) & 0xff) );
-	I2CDevice::writeRegister(MPU6050_GYRO_YOFFS_USR_H, (unsigned int) (t_gyroMean.Y & 0xff) );
+	I2CDevice::writeRegister(MPU6050_GYRO_YOFFS_USR_H, (unsigned int) ((t_gyroOffset.Y >> 8) & 0xff) );
+	I2CDevice::writeRegister(MPU6050_GYRO_YOFFS_USR_H, (unsigned int) (t_gyroOffset.Y & 0xff) );
 
-	I2CDevice::writeRegister(MPU6050_GYRO_ZOFFS_USR_H, (unsigned int) ((t_gyroMean.Z >> 8) & 0xff) );
-	I2CDevice::writeRegister(MPU6050_GYRO_ZOFFS_USR_H, (unsigned int) (t_gyroMean.Z & 0xff) );
+	I2CDevice::writeRegister(MPU6050_GYRO_ZOFFS_USR_H, (unsigned int) ((t_gyroOffset.Z >> 8) & 0xff) );
+	I2CDevice::writeRegister(MPU6050_GYRO_ZOFFS_USR_H, (unsigned int) (t_gyroOffset.Z & 0xff) );
 }
 
 // --------------------
-void MPU6050::writeAccelOffset(axisData& t_accelMean){
-	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_H, (unsigned int) ((t_accelMean.X >> 8) & 0xff) );
-	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_L, (unsigned int) (t_accelMean.X & 0xff) );
+void MPU6050::writeAccelOffset(axisData& t_accelOffset){
+	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_H, (unsigned int) ((t_accelOffset.X >> 8) & 0xff) );
+	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_L, (unsigned int) (t_accelOffset.X & 0xff) );
 
-	I2CDevice::writeRegister(MPU6050_ACCEL_YOFFS_USR_H, (unsigned int) ((t_accelMean.Y >> 8) & 0xff) );
-	I2CDevice::writeRegister(MPU6050_ACCEL_YOFFS_USR_L, (unsigned int) (t_accelMean.Y & 0xff) );
+	I2CDevice::writeRegister(MPU6050_ACCEL_YOFFS_USR_H, (unsigned int) ((t_accelOffset.Y >> 8) & 0xff) );
+	I2CDevice::writeRegister(MPU6050_ACCEL_YOFFS_USR_L, (unsigned int) (t_accelOffset.Y & 0xff) );
 
-	I2CDevice::writeRegister(MPU6050_ACCEL_ZOFFS_USR_H, (unsigned int) ((t_accelMean.Z >> 8) & 0xff) );
-	I2CDevice::writeRegister(MPU6050_ACCEL_ZOFFS_USR_L, (unsigned int) (t_accelMean.Z & 0xff) );
+	I2CDevice::writeRegister(MPU6050_ACCEL_ZOFFS_USR_H, (unsigned int) ((t_accelOffset.Z >> 8) & 0xff) );
+	I2CDevice::writeRegister(MPU6050_ACCEL_ZOFFS_USR_L, (unsigned int) (t_accelOffset.Z & 0xff) );
 }
 
 
