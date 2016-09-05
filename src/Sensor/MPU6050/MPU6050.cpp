@@ -9,8 +9,6 @@ MPU6050::MPU6050 (IGpio& t_IGpioInstance):
 // --------------------
 // FlightController destructor
 MPU6050::~MPU6050 () {
-	this->gyroData = {};
-	this->acceleratorData = {};
 }
 // --------------------
 
@@ -40,8 +38,8 @@ void MPU6050::calibrate() {
 	unsigned int maxAccelError = 8;
 	unsigned int maxGyroError = 4;
 
-	axisData tmp_gyroOffset = {};
-	axisData tmp_accelOffset = {};
+	axisData tmp_gyroOffset, tmp_accelOffset;
+
 
 
 	int trial = 0;
@@ -57,8 +55,7 @@ void MPU6050::calibrate() {
 		this->writeGyroOffset(tmp_gyroOffset);
 		this->writeAccelOffset(tmp_accelOffset);
 
-		axisData tmp_gyroMean = {};
-		axisData tmp_accelMean = {};
+		axisData tmp_gyroMean, tmp_accelMean;
 
 		unsigned int i;
 		for(i=0; i<iterations; i++) {
