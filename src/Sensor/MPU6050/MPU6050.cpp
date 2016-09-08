@@ -76,7 +76,7 @@ void MPU6050::calibrate() {
 			tmp_accelMean.X += (this->acceleratorData).X;
 			tmp_accelMean.Y += (this->acceleratorData).Y;
 			tmp_accelMean.Z += (this->acceleratorData).Z;
-
+			std::cout << tmp_gyroMean.X << "\n";
 			// wait for 2 ms
 			usleep(2000); 
 		}
