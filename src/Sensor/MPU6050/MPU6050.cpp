@@ -82,13 +82,13 @@ void MPU6050::calibrate() {
 		}
 		
 		// divide by iterations to get the mean
-		tmp_gyroMean.X = tmp_gyroMean.X / iterations;
-		tmp_gyroMean.Y = tmp_gyroMean.Y / iterations;
-		tmp_gyroMean.Z = tmp_gyroMean.Z / iterations;
+		tmp_gyroMean.X = tmp_gyroMean.X / (int) iterations;
+		tmp_gyroMean.Y = tmp_gyroMean.Y / (int) iterations;
+		tmp_gyroMean.Z = tmp_gyroMean.Z / (int) iterations;
 
-		tmp_accelMean.X = tmp_accelMean.X / iterations;
-		tmp_accelMean.Y = tmp_accelMean.Y / iterations;
-		tmp_accelMean.Z = tmp_accelMean.Z / iterations;
+		tmp_accelMean.X = tmp_accelMean.X / (int) iterations;
+		tmp_accelMean.Y = tmp_accelMean.Y / (int) iterations;
+		tmp_accelMean.Z = tmp_accelMean.Z / (int) iterations;
 
 		// check for every axis, if calibration is complete
 		int axisComplete = 0;
