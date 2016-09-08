@@ -44,8 +44,8 @@ void MPU6050::startLoop() {
 
 void MPU6050::calibrate() {
 	unsigned int iterations = 1000; // iterations to calculate the mean value
-	unsigned int maxAccelError = 8;
-	unsigned int maxGyroError = 4;
+	unsigned int maxAccelError = 15;
+	unsigned int maxGyroError = 15;
 
 	axisData tmp_gyroOffset, tmp_accelOffset;
 
