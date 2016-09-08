@@ -123,7 +123,7 @@
 
 struct axisData_int32 {
 	int X, Y, Z;
-	axisData(): X(0), Y(0), Z(0) {}
+	axisData_int32(): X(0), Y(0), Z(0) {}
 };
 
 struct axisData {
