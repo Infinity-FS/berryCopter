@@ -55,7 +55,7 @@ void MPU6050::calibrate() {
 	while(true) {
 		trial++;
 
-		std::cout<<"...\n";
+		std::cout<<"... ";
 
 		this->writeGyroOffset(tmp_gyroOffset);
 		this->writeAccelOffset(tmp_accelOffset);
@@ -96,18 +96,21 @@ void MPU6050::calibrate() {
 		// gyro axis X, Y, Z
 		if (abs(tmp_gyroMean.X) > maxGyroError) {
 			tmp_gyroOffset.X -= tmp_gyroMean.X / (maxGyroError);
+			std::cout << "| new gyro.X " << tmp_gyroOffset.X << " (" << tmp_gyroMean.X << ") |";
 		} else {
 			axisComplete++;
 		}
 
 		if (abs(tmp_gyroMean.Y) > maxGyroError) {
 			tmp_gyroOffset.Y -= tmp_gyroMean.Y / (maxGyroError);
+			std::cout << "| new gyro.Y " << tmp_gyroOffset.Y << " (" << tmp_gyroMean.Y << ") |";
 		} else {
 			axisComplete++;
 		}
 
 		if (abs(tmp_gyroMean.Z) > maxGyroError) {
 			tmp_gyroOffset.Z -= tmp_gyroMean.Z / (maxGyroError);
+			std::cout << "| new gyro.Z " << tmp_gyroOffset.Z << " (" << tmp_gyroMean.Z << ") |";
 		} else {
 			axisComplete++;
 		}
@@ -115,18 +118,21 @@ void MPU6050::calibrate() {
 		// accel axis X, Y, Z
 		if (abs(tmp_accelMean.X) > maxAccelError) {
 			tmp_accelOffset.X -= tmp_accelMean.X / (maxAccelError);
+			std::cout << "| new accel.X " << tmp_accelOffset.X << " (" << tmp_accelMean.X << ") |";
 		} else {
 			axisComplete++;
 		}
 
 		if (abs(tmp_accelMean.Y) > maxAccelError) {
 			tmp_accelOffset.Y -= tmp_accelMean.Y / (maxAccelError);
+			std::cout << "| new accel.Y " << tmp_accelOffset.Y << " (" << tmp_accelMean.Y << ") |";
 		} else {
 			axisComplete++;
 		}
 
 		if (abs(tmp_accelMean.Z) > maxAccelError) {
 			tmp_accelOffset.Z -= tmp_accelMean.Z / (maxAccelError);
+			std::cout << "| new accel.Z " << tmp_accelOffset.Z << " (" << tmp_accelMean.Z << ") |";
 		} else {
 			axisComplete++;
 		}
@@ -140,8 +146,8 @@ void MPU6050::calibrate() {
 
 			std::cout<< "Accel: ";
 			std::cout << "X "<< tmp_accelOffset.X << ", ";
-			std::cout << "Y "<< tmp_accelOffset.X << ", ";
-			std::cout << "Z "<< tmp_accelOffset.X << "\n";
+			std::cout << "Y "<< tmp_accelOffset.Y << ", ";
+			std::cout << "Z "<< tmp_accelOffset.Z << "\n";
 
 			break;
 		}
