@@ -95,47 +95,55 @@ void MPU6050::calibrate() {
 
 		// gyro axis X, Y, Z
 		if (abs(tmp_gyroMean.X) > maxGyroError) {
-			tmp_gyroOffset.X -= tmp_gyroMean.X / (maxGyroError);
+			tmp_gyroOffset.X -= tmp_gyroMean.X ;
 			std::cout << "| new gyro.X " << tmp_gyroOffset.X << " (" << tmp_gyroMean.X << ") |";
 		} else {
+			std::cout << "| gyro.X OK at " << tmp_gyroOffset.X << " (" << tmp_gyroMean.X << ") |";
 			axisComplete++;
 		}
 
 		if (abs(tmp_gyroMean.Y) > maxGyroError) {
-			tmp_gyroOffset.Y -= tmp_gyroMean.Y / (maxGyroError);
+			tmp_gyroOffset.Y -= tmp_gyroMean.Y ;
 			std::cout << "| new gyro.Y " << tmp_gyroOffset.Y << " (" << tmp_gyroMean.Y << ") |";
 		} else {
+			std::cout << "| gyro.Y OK at " << tmp_gyroOffset.Y << " (" << tmp_gyroMean.Y << ") |";
 			axisComplete++;
 		}
 
 		if (abs(tmp_gyroMean.Z) > maxGyroError) {
-			tmp_gyroOffset.Z -= tmp_gyroMean.Z / (maxGyroError);
+			tmp_gyroOffset.Z -= tmp_gyroMean.Z ;
 			std::cout << "| new gyro.Z " << tmp_gyroOffset.Z << " (" << tmp_gyroMean.Z << ") |";
 		} else {
+			std::cout << "| gyro.Z OK at " << tmp_gyroOffset.Z << " (" << tmp_gyroMean.Z << ") |";
 			axisComplete++;
 		}
 
 		// accel axis X, Y, Z
 		if (abs(tmp_accelMean.X) > maxAccelError) {
-			tmp_accelOffset.X -= tmp_accelMean.X / (maxAccelError);
+			tmp_accelOffset.X -= tmp_accelMean.X ;
 			std::cout << "| new accel.X " << tmp_accelOffset.X << " (" << tmp_accelMean.X << ") |";
 		} else {
+			std::cout << "| accel.X OK at " << tmp_accelOffset.X << " (" << tmp_accelMean.X << ") |";
 			axisComplete++;
 		}
 
 		if (abs(tmp_accelMean.Y) > maxAccelError) {
-			tmp_accelOffset.Y -= tmp_accelMean.Y / (maxAccelError);
+			tmp_accelOffset.Y -= tmp_accelMean.Y;
 			std::cout << "| new accel.Y " << tmp_accelOffset.Y << " (" << tmp_accelMean.Y << ") |";
 		} else {
+			std::cout << "| accel.Y OK at " << tmp_accelOffset.Y << " (" << tmp_accelMean.Y << ") |";
 			axisComplete++;
 		}
 
 		if (abs(tmp_accelMean.Z) > maxAccelError) {
-			tmp_accelOffset.Z -= tmp_accelMean.Z / (maxAccelError);
+			tmp_accelOffset.Z -= tmp_accelMean.Z;
 			std::cout << "| new accel.Z " << tmp_accelOffset.Z << " (" << tmp_accelMean.Z << ") |";
 		} else {
+			std::cout << "| accel.Z OK at " << tmp_accelOffset.Z << " (" << tmp_accelMean.Z << ") |";
 			axisComplete++;
 		}
+
+		std::cout<< "\n";
 
 		// check if complete
 		if (axisComplete == 6) {
