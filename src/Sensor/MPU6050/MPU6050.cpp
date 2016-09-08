@@ -47,6 +47,7 @@ void MPU6050::calibrate() {
 	unsigned int iterations = 1000; // iterations to calculate the mean value
 	unsigned int maxAccelError = 10;
 	unsigned int maxGyroError = 10;
+	int 1g = 2^15 / MPU6050_C_AccelRange;
 
 	axisData tmp_gyroOffset, tmp_accelOffset;
 
@@ -135,8 +136,8 @@ void MPU6050::calibrate() {
 			axisComplete++;
 		}
 
-		if (abs(tmp_accelMean.Z) > maxAccelError) {
-			tmp_accelOffset.Z -= ceil(tmp_accelMean.Z / 10);
+		if (abs(tmp_accelMean.Z) > maxAccelError + 1g) {
+			tmp_accelOffset.Z -= 1g + ceil(tmp_accelMean.Z / 10);
 			std::cout << "| new accel.Z " << tmp_accelOffset.Z << " (" << tmp_accelMean.Z << ") |";
 		} else {
 			std::cout << "| accel.Z OK at " << tmp_accelOffset.Z << " (" << tmp_accelMean.Z << ") |";
