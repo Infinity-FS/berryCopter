@@ -121,8 +121,13 @@
 #define MPU6050_C_GyroRange        250  // +- 250 deg/sec
 
 
-struct axisData {
+struct axisData_int32 {
 	int X, Y, Z;
+	axisData(): X(0), Y(0), Z(0) {}
+};
+
+struct axisData {
+	short X, Y, Z;
 	axisData(): X(0), Y(0), Z(0) {}
 };
 

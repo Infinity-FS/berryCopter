@@ -60,7 +60,7 @@ void MPU6050::calibrate() {
 		this->writeGyroOffset(tmp_gyroOffset);
 		this->writeAccelOffset(tmp_accelOffset);
 
-		axisData tmp_gyroMean, tmp_accelMean;
+		axisData_int32 tmp_gyroMean, tmp_accelMean;
 
 		unsigned int i;
 		for(i=0; i<iterations; i++) {
