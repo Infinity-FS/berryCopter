@@ -37,6 +37,7 @@ void MPU6050::startLoop() {
 		std::cout << "X "<< (this->acceleratorData).X << ", ";
 		std::cout << "Y "<< (this->acceleratorData).Y << ", ";
 		std::cout << "Z "<< (this->acceleratorData).Z << "\n";
+		usleep(2000 * 1000); 
 	}
 }
 
@@ -44,8 +45,8 @@ void MPU6050::startLoop() {
 
 void MPU6050::calibrate() {
 	unsigned int iterations = 1000; // iterations to calculate the mean value
-	unsigned int maxAccelError = 15;
-	unsigned int maxGyroError = 15;
+	unsigned int maxAccelError = 10;
+	unsigned int maxGyroError = 10;
 
 	axisData tmp_gyroOffset, tmp_accelOffset;
 
