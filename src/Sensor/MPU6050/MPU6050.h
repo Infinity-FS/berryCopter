@@ -122,7 +122,7 @@
 
 
 struct axisData {
-	short X, Y, Z;
+	int X, Y, Z;
 	axisData(): X(0), Y(0), Z(0) {}
 };
 
