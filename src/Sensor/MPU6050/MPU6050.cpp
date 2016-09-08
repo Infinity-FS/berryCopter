@@ -47,7 +47,7 @@ void MPU6050::calibrate() {
 	unsigned int iterations = 1000; // iterations to calculate the mean value
 	unsigned int maxAccelError = 10;
 	unsigned int maxGyroError = 10;
-	int oneG = (2^15) / MPU6050_C_AccelRange;
+	int oneG = pow(2, 15) / MPU6050_C_AccelRange;
 
 	axisData tmp_gyroOffset, tmp_accelOffset;
 
