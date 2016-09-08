@@ -29,14 +29,14 @@ void MPU6050::startLoop() {
 	for(;;){
 		this->read();
 		std::cout<< "Gyro: ";
-			std::cout << "X "<< (this->gyroData).X << ", ";
-			std::cout << "Y "<< (this->gyroData).Y << ", ";
-			std::cout << "Z "<< (this->gyroData).Z << "  ";
+		std::cout << "X "<< (this->gyroData).X << ", ";
+		std::cout << "Y "<< (this->gyroData).Y << ", ";
+		std::cout << "Z "<< (this->gyroData).Z << "  ";
 
-			std::cout<< "Accel: ";
-			std::cout << "X "<< (this->acceleratorData).X << ", ";
-			std::cout << "Y "<< (this->acceleratorData).Y << ", ";
-			std::cout << "Z "<< (this->acceleratorData).Z << "\n";
+		std::cout<< "Accel: ";
+		std::cout << "X "<< (this->acceleratorData).X << ", ";
+		std::cout << "Y "<< (this->acceleratorData).Y << ", ";
+		std::cout << "Z "<< (this->acceleratorData).Z << "\n";
 	}
 }
 
@@ -135,8 +135,8 @@ void MPU6050::calibrate() {
 		if (axisComplete == 6) {
 			std::cout<< "Gyro: ";
 			std::cout << "X "<< tmp_gyroOffset.X << ", ";
-			std::cout << "Y "<< tmp_gyroOffset.X << ", ";
-			std::cout << "Z "<< tmp_gyroOffset.X << "\n";
+			std::cout << "Y "<< tmp_gyroOffset.Y << ", ";
+			std::cout << "Z "<< tmp_gyroOffset.Z << "\n";
 
 			std::cout<< "Accel: ";
 			std::cout << "X "<< tmp_accelOffset.X << ", ";
@@ -175,22 +175,22 @@ void MPU6050::read () {
 	(this->acceleratorData).Y = parseToShort((char) result[8], (char) result[9]);
 	(this->acceleratorData).Z = parseToShort((char) result[10], (char) result[11]);
 
-	//std::cout << "Gyro X: " << (this->gyroData).X << " Y: " << (this->gyroData).Y << " Z: " << (this->gyroData).Z;
-	//std::cout << "Acc X: " << (this->acceleratorData).X << " Y: "  << (this->acceleratorData).Y << " Z: " << (this->acceleratorData).Z;
-	//std::cout << "\n";
+	/*std::cout << "Gyro X: " << (this->gyroData).X << " Y: " << (this->gyroData).Y << " Z: " << (this->gyroData).Z;
+	std::cout << " Acc X: " << (this->acceleratorData).X << " Y: "  << (this->acceleratorData).Y << " Z: " << (this->acceleratorData).Z;
+	std::cout << "\n";*/
 }
 
 // --------------------
 
 void MPU6050::writeGyroOffset(axisData& t_gyroOffset){
 	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (unsigned int) ((t_gyroOffset.X >> 8) & 0xff) );
-	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (unsigned int) (t_gyroOffset.X & 0xff) );
+	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_L, (unsigned int) (t_gyroOffset.X & 0xff) );
 
 	I2CDevice::writeRegister(MPU6050_GYRO_YOFFS_USR_H, (unsigned int) ((t_gyroOffset.Y >> 8) & 0xff) );
-	I2CDevice::writeRegister(MPU6050_GYRO_YOFFS_USR_H, (unsigned int) (t_gyroOffset.Y & 0xff) );
+	I2CDevice::writeRegister(MPU6050_GYRO_YOFFS_USR_L, (unsigned int) (t_gyroOffset.Y & 0xff) );
 
 	I2CDevice::writeRegister(MPU6050_GYRO_ZOFFS_USR_H, (unsigned int) ((t_gyroOffset.Z >> 8) & 0xff) );
-	I2CDevice::writeRegister(MPU6050_GYRO_ZOFFS_USR_H, (unsigned int) (t_gyroOffset.Z & 0xff) );
+	I2CDevice::writeRegister(MPU6050_GYRO_ZOFFS_USR_L, (unsigned int) (t_gyroOffset.Z & 0xff) );
 }
 
 // --------------------
