@@ -61,7 +61,8 @@ void MPU6050::calibrate() {
 
 		this->writeGyroOffset(tmp_gyroOffset);
 		this->writeAccelOffset(tmp_accelOffset);
-
+		this->readAccelOffset();
+		break;
 		axisData_int32 tmp_gyroMean, tmp_accelMean;
 
 		unsigned int i;
@@ -196,7 +197,25 @@ void MPU6050::read () {
 }
 
 // --------------------
+void MPU6050::readAccelOffset(){
+	int sizeToRead = 6;
+	unsigned int regAdrr [sizeToRead] = {
+								MPU6050_ACCEL_XOFFS_USR_H, MPU6050_ACCEL_XOFFS_USR_L, 
+								MPU6050_ACCEL_YOFFS_USR_H, MPU6050_ACCEL_YOFFS_USR_L, 
+								MPU6050_ACCEL_ZOFFS_USR_H, MPU6050_ACCEL_ZOFFS_USR_L,
+							};
 
+	unsigned int result [sizeToRead] = {};
+	I2CDevice::readRegister(regAdrr, result, sizeToRead);
+	std::cout<< "Accel Offset ";
+	std::cout<< "X:" << parseToShort((char) result[0], (char) result[1]);
+	std::cout<< "Y:" << parseToShort((char) result[2], (char) result[3]);
+	std::cout<< "Z:" << parseToShort((char) result[4], (char) result[5]);
+	std::cout<< "\n";
+}
+
+
+// --------------------
 void MPU6050::writeGyroOffset(axisData& t_gyroOffset){
 	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (unsigned int) ((t_gyroOffset.X >> 8) & 0xff) );
 	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_L, (unsigned int) (t_gyroOffset.X & 0xff) );
