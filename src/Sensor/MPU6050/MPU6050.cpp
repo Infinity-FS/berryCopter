@@ -65,8 +65,7 @@ void MPU6050::calibrate() {
 
 		this->writeGyroOffset(tmp_gyroOffset);
 		this->writeAccelOffset(tmp_accelOffset);
-		this->readAccelOffset();
-		break;
+
 		axisData_int32 tmp_gyroMean, tmp_accelMean;
 
 		unsigned int i;
@@ -153,6 +152,8 @@ void MPU6050::calibrate() {
 
 		// check if complete
 		if (axisComplete == 6) {
+			this->readAccelOffset();
+
 			std::cout<< "Gyro: ";
 			std::cout << "X "<< tmp_gyroOffset.X << ", ";
 			std::cout << "Y "<< tmp_gyroOffset.Y << ", ";
