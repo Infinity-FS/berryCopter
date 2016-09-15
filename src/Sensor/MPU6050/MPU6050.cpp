@@ -140,9 +140,9 @@ void MPU6050::calibrate() {
 			axisComplete++;
 		}
 
-		if (abs(tmp_accelMean.Z - oneG_offset) > maxAccelError) {
-			tmp_accelOffset.Z -= -oneG_offset + ceil(tmp_accelMean.Z / AccelScaleFactor16_offset);
-			std::cout << "| new accel.Z " << tmp_accelOffset.Z << " (" << tmp_accelMean.Z << ") |";
+		if (abs(tmp_accelMean.Z + (pow(2, 15) / MPU6050_C_AccelRange)) > maxAccelError) {
+			tmp_accelOffset.Z -= oneG_offset + ceil(tmp_accelMean.Z / AccelScaleFactor16_offset);
+			std::cout << "| new accel.Z " << tmp_accelOffset.Z << " (" << tmp_accelMean.Z << " @ " << (tmp_accelMean.Z + (pow(2, 15) / MPU6050_C_AccelRange)) <<") |";
 		} else {
 			std::cout << "| accel.Z OK at " << tmp_accelOffset.Z << " (" << tmp_accelMean.Z << ") |";
 			axisComplete++;
