@@ -148,6 +148,7 @@ class MPU6050 : public  I2CDevice {
  	axisData acceleratorData;
 
  	void read();
+ 	void readAccelOffset();
 
  	void writeGyroOffset(axisData& t_gyroMean);
  	void writeAccelOffset(axisData& t_accelMean);
