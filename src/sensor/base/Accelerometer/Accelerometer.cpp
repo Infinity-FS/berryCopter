@@ -24,9 +24,8 @@ void Accelerometer::calibrateAccelerometer() {
 
     int trial = 0;
     while (true) {
+        std::cout << "calibrateAccelerometer trail: " << trial << " x: " << offset.X << " y: " << offset.Y << " z: " << offset.Z << "\n";
         trial++;
-
-        std::cout << "calibrateAccelerometer trail: " << trial << " x: " << offset.X << " y: " << offset.Y << " z: " << offset.Z;
 
         this->writeAccelerometerOffset(offset);
 
@@ -78,12 +77,12 @@ bool Accelerometer::adjustAccelerometerOffset(axisData<short> &r_offset) {
         std::cout << "| accel.Z OK at " << r_offset.Z << " (" << (this->meanAccelerometerAxisData).Z << ") |";
         axisComplete++;
     }
-
+    std::cout << "\n";
 
     if(axisComplete == 3){
-        return true;
-    } else {
         return false;
+    } else {
+        return true;
     }
 }
 

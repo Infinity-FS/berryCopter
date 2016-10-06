@@ -54,9 +54,9 @@ void MPU6050::readAccelerometer () {
 	unsigned int result [sizeToRead] = {};
 	I2CDevice::readRegister(regAdrr, result, sizeToRead);
 
-	(this->accelerometerAxisData).X = ((((short) result[1] ) << 8) | (char) result[0]);
-	(this->accelerometerAxisData).Y = ((((short) result[3] ) << 8) | (char) result[2]);
-	(this->accelerometerAxisData).Z = ((((short) result[5] ) << 8) | (char) result[4]);
+	(this->accelerometerAxisData).X = ((((short) result[0] ) << 8) | (char) result[1]);
+	(this->accelerometerAxisData).Y = ((((short) result[2] ) << 8) | (char) result[3]);
+	(this->accelerometerAxisData).Z = ((((short) result[4] ) << 8) | (char) result[5]);
 }
 
 // --------------------
@@ -71,9 +71,9 @@ void MPU6050::readAccelerometerOffset(axisData<short> &t_offset) {
 	unsigned int result [sizeToRead] = {};
 	I2CDevice::readRegister(regAdrr, result, sizeToRead);
 	std::cout<< "Accel Offset ";
-	std::cout<< "X:" << ((((short) result[1] ) << 8) | (char) result[0]);
-	std::cout<< "Y:" << ((((short) result[3] ) << 8) | (char) result[2]);
-	std::cout<< "Z:" << ((((short) result[5] ) << 8) | (char) result[4]);
+	std::cout<< "X:" << ((((short) result[0] ) << 8) | (char) result[1]);
+	std::cout<< "Y:" << ((((short) result[2] ) << 8) | (char) result[3]);
+	std::cout<< "Z:" << ((((short) result[4] ) << 8) | (char) result[5]);
 	std::cout<< "\n";
 }
 

@@ -1,9 +1,6 @@
 #ifndef __ACCELERATOR_H_INCLUDED__
 #define __ACCELERATOR_H_INCLUDED__
 
-#define ACCELERATOR_CALIBRATION_MEAN_ITERATIONS 1000
-#define ACCELERATOR_CALIBRATION_MEAN_DELAY_MCS 2000 // mcs
-
 #include "../AxisData/AxisData.h"
 #include <iostream>
 #include <stdio.h>
