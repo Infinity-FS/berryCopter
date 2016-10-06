@@ -74,9 +74,10 @@ bool Accelerometer::adjustAccelerometerOffset(axisData<short> &r_offset) {
     }
     // Z
     int oneG_offsetRange = (pow(2, 15) / this->AccelerometerOffsetRange_G);
-    if (abs(this->meanAccelerometerAxisData.Z - oneG_offsetRange) > this->calibrationMaxError) {
+    int oneG = (pow(2, 15) / this->AccelerometerRange_G);
+    if (abs(this->meanAccelerometerAxisData.Z - oneG) > this->calibrationMaxError) {
         r_offset.Z -= - oneG_offsetRange + ( ((double) (this->meanAccelerometerAxisData).Z) * scaleFactor) ;
-        std::cout << "| new accel.Z " << r_offset.Z << " (" << (this->meanAccelerometerAxisData).Z << " @ " << (oneG_offsetRange - (this->meanAccelerometerAxisData).Z) <<") |";
+        std::cout << "| new accel.Z " << r_offset.Z << " (" << (this->meanAccelerometerAxisData).Z << " @ " << (oneG - (this->meanAccelerometerAxisData).Z) <<") |";
     } else {
         std::cout << "| accel.Z OK at " << r_offset.Z << " (" << (this->meanAccelerometerAxisData).Z << ") |";
         axisComplete++;
