@@ -11,10 +11,7 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3222490-0981-4f87-9821-9635af5e86f5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sensor/MPU6050/MPU6050.cpp" afterPath="$PROJECT_DIR$/src/sensor/MPU6050/MPU6050.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sensor/MPU6050/MPU6050.h" afterPath="$PROJECT_DIR$/src/sensor/MPU6050/MPU6050.h" />
-    </list>
+    <list default="true" id="c3222490-0981-4f87-9821-9635af5e86f5" name="Default" comment="" />
     <ignored path="berryCopter.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -551,12 +548,12 @@
       <option name="presentableId" value="Default" />
       <updated>1475661035231</updated>
       <workItem from="1475661037806" duration="8789000" />
-      <workItem from="1475779282348" duration="3759000" />
+      <workItem from="1475779282348" duration="3782000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12548000" />
+    <option name="totallyTimeSpent" value="12571000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1436" height="877" extended-state="6" />
