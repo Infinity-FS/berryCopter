@@ -30,7 +30,18 @@ int I2CDevice::readRegister(unsigned int t_regAddr, unsigned int* t_byte) {
 int I2CDevice::readRegister(unsigned int t_regAddr[], unsigned int t_byte[], int t_size) {
 	int i;
 	for (i = 0; i < t_size; ++i) {
+		long start_mcs, end_mcs; // Milliseconds
+		struct timespec spec;
+
+		clock_gettime(CLOCK_REALTIME, &spec);
+		start_mcs = (long) (spec.tv_nsec / 1000); // Convert nanoseconds to microseconds
+
 		this->readRegister(t_regAddr[i], &t_byte[i]);
+
+		clock_gettime(CLOCK_REALTIME, &spec);
+		end_mcs = (long) (spec.tv_nsec / 1000); // Convert nanoseconds to microseconds
+
+		std::cout << "READ one byte took: " << (end_mcs- start_mcs) << "\n";
 	}
 	return 1;
 }
@@ -47,7 +58,7 @@ int I2CDevice::writeRegister(unsigned int t_regAddr, unsigned int t_byte) {
 	clock_gettime(CLOCK_REALTIME, &spec);
 	end_mcs = (long) (spec.tv_nsec / 1000); // Convert nanoseconds to microseconds
 
-	std::cout << (end_mcs- start_mcs) << "\n";
+	std::cout << "WRITE one byte took: " << (end_mcs- start_mcs) << "\n";
 	if (result == 0) {
 		return 1;
 	} else {
