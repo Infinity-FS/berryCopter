@@ -12,9 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3222490-0981-4f87-9821-9635af5e86f5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sensor/MPU6050/MPU6050.cpp" afterPath="$PROJECT_DIR$/src/sensor/MPU6050/MPU6050.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sensor/base/Accelerometer/Accelerometer.cpp" afterPath="$PROJECT_DIR$/src/sensor/base/Accelerometer/Accelerometer.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sensor/base/Accelerometer/Accelerometer.h" afterPath="$PROJECT_DIR$/src/sensor/base/Accelerometer/Accelerometer.h" />
     </list>
     <ignored path="berryCopter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Accelerometer.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Accelerometer.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sensor/base/Accelerometer/Accelerometer.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
+            <state relative-caret-position="495">
+              <caret line="76" column="89" selection-start-line="76" selection-start-column="89" selection-end-line="76" selection-end-column="89" />
               <folding />
             </state>
           </provider>
@@ -64,10 +62,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MPU6050.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MPU6050.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sensor/MPU6050/MPU6050.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
+            <state relative-caret-position="840">
               <caret line="58" column="84" selection-start-line="58" selection-start-column="84" selection-end-line="58" selection-end-column="84" />
               <folding />
             </state>
@@ -157,8 +155,8 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/main.cpp" />
         <option value="$PROJECT_DIR$/src/sensor/base/Accelerometer/Accelerometer.h" />
-        <option value="$PROJECT_DIR$/src/sensor/base/Accelerometer/Accelerometer.cpp" />
         <option value="$PROJECT_DIR$/src/sensor/MPU6050/MPU6050.cpp" />
+        <option value="$PROJECT_DIR$/src/sensor/base/Accelerometer/Accelerometer.cpp" />
       </list>
     </option>
   </component>
@@ -553,12 +551,12 @@
       <option name="presentableId" value="Default" />
       <updated>1475661035231</updated>
       <workItem from="1475661037806" duration="8789000" />
-      <workItem from="1475779282348" duration="4377000" />
+      <workItem from="1475779282348" duration="4640000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13166000" />
+    <option name="totallyTimeSpent" value="13429000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1436" height="877" extended-state="6" />
@@ -756,6 +754,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sensor/MPU6050/MPU6050.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="58" column="84" selection-start-line="58" selection-start-column="84" selection-end-line="58" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sensor/base/Accelerometer/Accelerometer.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -766,16 +772,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sensor/base/Accelerometer/Accelerometer.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sensor/MPU6050/MPU6050.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="58" column="84" selection-start-line="58" selection-start-column="84" selection-end-line="58" selection-end-column="84" />
+        <state relative-caret-position="495">
+          <caret line="76" column="89" selection-start-line="76" selection-start-column="89" selection-end-line="76" selection-end-column="89" />
           <folding />
         </state>
       </provider>

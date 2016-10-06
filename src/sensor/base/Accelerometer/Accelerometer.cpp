@@ -29,6 +29,10 @@ void Accelerometer::calibrateAccelerometer() {
 
         this->writeAccelerometerOffset(offset);
 
+        this->meanAccelerometerAxisData.X = 0;
+        this->meanAccelerometerAxisData.Y = 0;
+        this->meanAccelerometerAxisData.Z = 0;
+
         // read data within x ms time interval
         unsigned int i;
         for (i = 0; i < (unsigned int) this->calibrationMeanIterations; i++) {
@@ -54,7 +58,7 @@ bool Accelerometer::adjustAccelerometerOffset(axisData<short> &r_offset) {
     double scaleFactor = this->AccelerometerRange_G / this->AccelerometerOffsetRange_G; // If the offset has another range as the measured data
     // X
     if (abs(this->meanAccelerometerAxisData.X) > this->calibrationMaxError) {
-        r_offset.X -= (int) ((this->meanAccelerometerAxisData).X * scaleFactor);
+        r_offset.X -= (int) ( ((double) (this->meanAccelerometerAxisData).X) * scaleFactor);
         std::cout << "| new accel.X " << r_offset.X << " (" << (this->meanAccelerometerAxisData).X << ") |";
     } else {
         std::cout << "| accel.X OK at " << r_offset.X << " (" << (this->meanAccelerometerAxisData).X << ") |";
@@ -62,7 +66,7 @@ bool Accelerometer::adjustAccelerometerOffset(axisData<short> &r_offset) {
     }
     // Y
     if (abs(this->meanAccelerometerAxisData.Y) > this->calibrationMaxError) {
-        r_offset.Y -= (int) ((this->meanAccelerometerAxisData).Y * scaleFactor);
+        r_offset.Y -= (int) ( ((double) (this->meanAccelerometerAxisData).Y) * scaleFactor);
         std::cout << "| new accel.Y " << r_offset.Y << " (" << (this->meanAccelerometerAxisData).Y << ") |";
     } else {
         std::cout << "| accel.Y OK at " << r_offset.Y << " (" << (this->meanAccelerometerAxisData).Y << ") |";
@@ -71,7 +75,7 @@ bool Accelerometer::adjustAccelerometerOffset(axisData<short> &r_offset) {
     // Z
     int oneG_offsetRange = (pow(2, 15) / this->AccelerometerOffsetRange_G);
     if (abs(this->meanAccelerometerAxisData.Z - oneG_offsetRange) > this->calibrationMaxError) {
-        r_offset.Z -= - oneG_offsetRange + ((this->meanAccelerometerAxisData).Z * scaleFactor) ;
+        r_offset.Z -= - oneG_offsetRange + ( ((double) (this->meanAccelerometerAxisData).Z) * scaleFactor) ;
         std::cout << "| new accel.Z " << r_offset.Z << " (" << (this->meanAccelerometerAxisData).Z << " @ " << (oneG_offsetRange - (this->meanAccelerometerAxisData).Z) <<") |";
     } else {
         std::cout << "| accel.Z OK at " << r_offset.Z << " (" << (this->meanAccelerometerAxisData).Z << ") |";
