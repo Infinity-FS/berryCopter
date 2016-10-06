@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <stdio.h>
+#include <chrono>
 #include "../IGpio/IGpio.h"
 
 class I2CDevice {

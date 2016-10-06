@@ -36,7 +36,14 @@ int I2CDevice::readRegister(unsigned int t_regAddr[], unsigned int t_byte[], int
 }
 
 int I2CDevice::writeRegister(unsigned int t_regAddr, unsigned int t_byte) {
+	auto begin = std::chrono::high_resolution_clock::now();
+
 	int result = (this->IGpioInstance).writeI2CRegisterByte(this->I2CHandleID, t_regAddr, t_byte);
+
+	auto end = std::chrono::high_resolution_clock::now();
+	auto dur = end - begin;
+	auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(dur).count();
+	std::cout << ms << endl;
 	if (result == 0) {
 		return 1;
 	} else {
