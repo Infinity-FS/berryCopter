@@ -1,7 +1,7 @@
 #include "Accelerometer.h"
 
 Accelerometer::Accelerometer(short t_AccelerometerRange_G, short t_AccelerometerOffsetRange_G, int t_calibrationMeanIterations, int t_calibrationMeanDelay, int t_calibrationMaxError) :
-        AccelerometerRange_G(t_AccelerometerRange),
+        AccelerometerRange_G(t_AccelerometerRange_G),
         AccelerometerOffsetRange_G(t_AccelerometerOffsetRange_G),
         calibrationMeanIterations(t_calibrationMeanIterations),
         calibrationMeanDelay(t_calibrationMeanDelay),
@@ -32,7 +32,7 @@ void Accelerometer::calibrateAccelerometer() {
 
         // read data within x ms time interval
         unsigned int i;
-        for (i = 0; i < this->calibrationMeanIterations; i++) {
+        for (i = 0; i < (unsigned int) this->calibrationMeanIterations; i++) {
             // reads data and updates accelAxisData
             this->readAccelerometer();
             this->updateAccelerometerMean();
@@ -94,5 +94,5 @@ axisData<short> Accelerometer::getAccelerometerAxisData() {
 }
 
 short Accelerometer::getAccelerometerRange_G() {
-    return this->maxAccelerometerRange_G;
+    return this->AccelerometerRange_G;
 }

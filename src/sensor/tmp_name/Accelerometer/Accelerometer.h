@@ -5,6 +5,11 @@
 #define ACCELERATOR_CALIBRATION_MEAN_DELAY_MCS 2000 // mcs
 
 #include "../AxisData/AxisData.h"
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <unistd.h>
 
 class Accelerometer {
     public:
@@ -31,7 +36,7 @@ class Accelerometer {
     private:
         int calibrationMeanIterations, calibrationMeanDelay, calibrationMaxError;
 
-        bool adjustAccelerometerOffset();
+        bool adjustAccelerometerOffset(axisData<short> &r_offset) {
 };
 
 #endif // __ACCELERATOR_H_INCLUDED__
