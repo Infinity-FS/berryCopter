@@ -2,8 +2,9 @@
 
 // --------------------
 // FlightController constructor
-MPU6050::MPU6050 (IGpio& t_IGpioInstance): 
-I2CDevice (0x68, 1, t_IGpioInstance)
+MPU6050::MPU6050 (int t_AccelerometerRange_G, IGpio& t_IGpioInstance):
+I2CDevice (0x68, 1, t_IGpioInstance),
+Accelerometer(t_AccelerometerRange_G ,16, 1000, 2000, 10)
 {
 }
 // --------------------
@@ -53,9 +54,9 @@ void MPU6050::readAccelerometer () {
 	unsigned int result [sizeToRead] = {};
 	I2CDevice::readRegister(regAdrr, result, sizeToRead);
 
-	(this->accelerometerAxisData).X = (((short) result[1] ) << 8) | result[0];
-	(this->accelerometerAxisData).Y = (((short) result[3] ) << 8) | result[2];
-	(this->accelerometerAxisData).Z = (((short) result[5] ) << 8) | result[4];
+	(this->accelerometerAxisData).X = (((short) result[1] ) << 8) | (char) result[0];
+	(this->accelerometerAxisData).Y = (((short) result[3] ) << 8) | (char) result[2];
+	(this->accelerometerAxisData).Z = (((short) result[5] ) << 8) | (char) result[4];
 }
 
 // --------------------
@@ -70,23 +71,23 @@ void MPU6050::readAccelerometerOffset(axisData<short> &t_offset) {
 	unsigned int result [sizeToRead] = {};
 	I2CDevice::readRegister(regAdrr, result, sizeToRead);
 	std::cout<< "Accel Offset ";
-	std::cout<< "X:" << (((short) result[1] ) << 8) | result[0];
-	std::cout<< "Y:" << (((short) result[3] ) << 8) | result[2];
-	std::cout<< "Z:" << (((short) result[5] ) << 8) | result[4];
+	std::cout<< "X:" << (((short) result[1] ) << 8) | (char) result[0];
+	std::cout<< "Y:" << (((short) result[3] ) << 8) | (char) result[2];
+	std::cout<< "Z:" << (((short) result[5] ) << 8) | (char) result[4];
 	std::cout<< "\n";
 }
 
 
 // --------------------
 void MPU6050::writeAccelerometerOffset (axisData<short> &t_offset){
-	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_H, (unsigned int) ((t_accelOffset.X >> 8) & 0xff) );
-	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_L, (unsigned int) (t_accelOffset.X & 0xff) );
+	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_H, (unsigned int) ((t_offset.X >> 8) & 0xff) );
+	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_L, (unsigned int) (t_offset.X & 0xff) );
 
-	I2CDevice::writeRegister(MPU6050_ACCEL_YOFFS_USR_H, (unsigned int) ((t_accelOffset.Y >> 8) & 0xff) );
-	I2CDevice::writeRegister(MPU6050_ACCEL_YOFFS_USR_L, (unsigned int) (t_accelOffset.Y & 0xff) );
+	I2CDevice::writeRegister(MPU6050_ACCEL_YOFFS_USR_H, (unsigned int) ((t_offset.Y >> 8) & 0xff) );
+	I2CDevice::writeRegister(MPU6050_ACCEL_YOFFS_USR_L, (unsigned int) (t_offset.Y & 0xff) );
 
-	I2CDevice::writeRegister(MPU6050_ACCEL_ZOFFS_USR_H, (unsigned int) ((t_accelOffset.Z >> 8) & 0xff) );
-	I2CDevice::writeRegister(MPU6050_ACCEL_ZOFFS_USR_L, (unsigned int) (t_accelOffset.Z & 0xff) );
+	I2CDevice::writeRegister(MPU6050_ACCEL_ZOFFS_USR_H, (unsigned int) ((t_offset.Z >> 8) & 0xff) );
+	I2CDevice::writeRegister(MPU6050_ACCEL_ZOFFS_USR_L, (unsigned int) (t_offset.Z & 0xff) );
 }
 
 

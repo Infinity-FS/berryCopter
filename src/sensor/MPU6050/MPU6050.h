@@ -126,7 +126,7 @@
 
 class MPU6050 : public  I2CDevice, public Accelerometer {
  public:
-	MPU6050(IGpio& t_IGpioInstance);
+	MPU6050(int t_AccelerometerRange_G, IGpio& t_IGpioInstance);
 	~MPU6050();
 
 	void wakeUp ();
