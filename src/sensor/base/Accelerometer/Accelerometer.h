@@ -36,7 +36,7 @@ class Accelerometer {
     private:
         int calibrationMeanIterations, calibrationMeanDelay, calibrationMaxError;
 
-        bool adjustAccelerometerOffset(axisData<short> &r_offset) {
+        bool adjustAccelerometerOffset(axisData<short> &r_offset);
 };
 
 #endif // __ACCELERATOR_H_INCLUDED__
