@@ -11,7 +11,6 @@
 #include "../../GPIO/IGpio/IGpio.h"
 #include "../base/AxisData/AxisData.h"
 #include "../base/Accelerometer/Accelerometer.h"
-#include "../base/Gyrometer/Gyrometer.h"
 
 
 

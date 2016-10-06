@@ -4,7 +4,7 @@
 #define ACCELERATOR_CALIBRATION_MEAN_ITERATIONS 1000
 #define ACCELERATOR_CALIBRATION_MEAN_DELAY_MCS 2000 // mcs
 
-#include "../AxisData/Axisdata.h"
+#include "../AxisData/AxisData.h"
 
 class Accelerometer {
     public:
