@@ -1,3 +1,3 @@
 lib/pigpio_lib/PIGPIO/
 start
-.idea
+.idea/*

@@ -24,7 +24,7 @@ void Accelerometer::calibrateAccelerometer() {
 
     int trial = 0;
     while (true) {
-        std::cout << "calibrateAccelerometer trail: " << trial << " x: " << offset.X << " y: " << offset.Y << " z: " << offset.Z << "\n";
+        std::cout << "calibrateAccelerometer trail: " << trial << " x: " << offset.X << " y: " << offset.Y << " z: " << offset.Z << " ";
         trial++;
 
         this->writeAccelerometerOffset(offset);
