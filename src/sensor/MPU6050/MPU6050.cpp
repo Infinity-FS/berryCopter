@@ -27,16 +27,12 @@ void MPU6050::wakeUp () {
 
 void MPU6050::startLoop() {
 	for(;;){
-		this->read();
-		std::cout<< "Gyro: ";
-		std::cout << "X "<< (this->gyroData).X << ", ";
-		std::cout << "Y "<< (this->gyroData).Y << ", ";
-		std::cout << "Z "<< (this->gyroData).Z << "  ";
+		this->readAccelerometer();
 
 		std::cout<< "Accel: ";
-		std::cout << "X "<< (this->acceleratorData).X << ", ";
-		std::cout << "Y "<< (this->acceleratorData).Y << ", ";
-		std::cout << "Z "<< (this->acceleratorData).Z << "\n";
+		std::cout << "X "<< (this->accelerometerAxisData).X << ", ";
+		std::cout << "Y "<< (this->accelerometerAxisData).Y << ", ";
+		std::cout << "Z "<< (this->accelerometerAxisData).Z << "\n";
 		usleep(2000 * 1000); 
 	}
 }
@@ -57,13 +53,13 @@ void MPU6050::readAccelerometer () {
 	unsigned int result [sizeToRead] = {};
 	I2CDevice::readRegister(regAdrr, result, sizeToRead);
 
-	(this->accelerometerData).X = parseToShort((char) result[0], (char) result[1]);
-	(this->accelerometerData).Y = parseToShort((char) result[2], (char) result[3]);
-	(this->accelerometerData).Z = parseToShort((char) result[4], (char) result[5]);
+	(this->accelerometerAxisData).X = (((short) result[1] ) << 8) | result[0];
+	(this->accelerometerAxisData).Y = (((short) result[3] ) << 8) | result[2];
+	(this->accelerometerAxisData).Z = (((short) result[5] ) << 8) | result[4];
 }
 
 // --------------------
-void MPU6050::readAccelerometerOffset() {
+void MPU6050::readAccelerometerOffset(axisData<short> &t_offset) {
 	int sizeToRead = 6;
 	unsigned int regAdrr [sizeToRead] = {
 		MPU6050_ACCEL_XOFFS_USR_H, MPU6050_ACCEL_XOFFS_USR_L, 
@@ -74,27 +70,15 @@ void MPU6050::readAccelerometerOffset() {
 	unsigned int result [sizeToRead] = {};
 	I2CDevice::readRegister(regAdrr, result, sizeToRead);
 	std::cout<< "Accel Offset ";
-	std::cout<< "X:" << parseToShort((char) result[0], (char) result[1]);
-	std::cout<< "Y:" << parseToShort((char) result[2], (char) result[3]);
-	std::cout<< "Z:" << parseToShort((char) result[4], (char) result[5]);
+	std::cout<< "X:" << (((short) result[1] ) << 8) | result[0];
+	std::cout<< "Y:" << (((short) result[3] ) << 8) | result[2];
+	std::cout<< "Z:" << (((short) result[5] ) << 8) | result[4];
 	std::cout<< "\n";
 }
 
 
 // --------------------
-void MPU6050::writeGyroOffset(axisData& t_gyroOffset){
-	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (unsigned int) ((t_gyroOffset.X >> 8) & 0xff) );
-	I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_L, (unsigned int) (t_gyroOffset.X & 0xff) );
-
-	I2CDevice::writeRegister(MPU6050_GYRO_YOFFS_USR_H, (unsigned int) ((t_gyroOffset.Y >> 8) & 0xff) );
-	I2CDevice::writeRegister(MPU6050_GYRO_YOFFS_USR_L, (unsigned int) (t_gyroOffset.Y & 0xff) );
-
-	I2CDevice::writeRegister(MPU6050_GYRO_ZOFFS_USR_H, (unsigned int) ((t_gyroOffset.Z >> 8) & 0xff) );
-	I2CDevice::writeRegister(MPU6050_GYRO_ZOFFS_USR_L, (unsigned int) (t_gyroOffset.Z & 0xff) );
-}
-
-// --------------------
-void MPU6050::writeAccelOffset(axisData& t_accelOffset){
+void MPU6050::writeAccelerometerOffset (axisData<short> &t_offset){
 	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_H, (unsigned int) ((t_accelOffset.X >> 8) & 0xff) );
 	I2CDevice::writeRegister(MPU6050_ACCEL_XOFFS_USR_L, (unsigned int) (t_accelOffset.X & 0xff) );
 

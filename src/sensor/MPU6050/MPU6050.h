@@ -8,7 +8,7 @@
 #include "../../GPIO/IGpio/IGpio.h"
 #include "../base/AxisData/AxisData.h"
 #include "../base/Accelerometer/Accelerometer.h"
-
+#include <unistd.h>
 
 
 
@@ -133,17 +133,10 @@ class MPU6050 : public  I2CDevice, public Accelerometer {
 	void startLoop();
 
  private:
- 	axisData gyroData;
- 	axisData accelerometerData;
+ 	void readAccelerometer();
+ 	void readAccelerometerOffset(axisData<short> &t_offset);
+ 	void writeAccelerometerOffset (axisData<short> &t_offset);
 
- 	void read();
- 	void readAccelOffset();
-
- 	void calculateOffsetMean(axisData_int32& t_gyroMean ,axisData_int32& t_accelMean);
- 	void adjustOffset(short& t_offset, int t_offsetMean, int& axisCounter, unsigned int t_maxError, unsigned int t_scaleFactor, string t_name);
-
- 	void writeGyroOffset(axisData& t_gyroMean);
- 	void writeAccelOffset(axisData& t_accelMean);
 };
 
 #endif // __MPU6050_H_INCLUDED__
