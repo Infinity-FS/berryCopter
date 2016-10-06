@@ -55,7 +55,7 @@ void Accelerometer::calibrateAccelerometer() {
 bool Accelerometer::adjustAccelerometerOffset(axisData<short> &r_offset) {
     int axisComplete = 0;
 
-    double scaleFactor = this->AccelerometerRange_G / this->AccelerometerOffsetRange_G; // If the offset has another range as the measured data
+    double scaleFactor = ((double) this->AccelerometerRange_G) / ((double) this->AccelerometerOffsetRange_G); // If the offset has another range as the measured data
     // X
     if (abs(this->meanAccelerometerAxisData.X) > this->calibrationMaxError) {
         r_offset.X -= (int) ( ((double) (this->meanAccelerometerAxisData).X) * scaleFactor);
