@@ -40,13 +40,13 @@ int I2CDevice::writeRegister(unsigned int t_regAddr, unsigned int t_byte) {
 	struct timespec spec;
 
 	clock_gettime(CLOCK_REALTIME, &spec);
-	start_mcs = round(spec.tv_nsec / 1.0e3); // Convert nanoseconds to microseconds
+	start_mcs = (long) (spec.tv_nsec / 1000); // Convert nanoseconds to microseconds
 
 	int result = (this->IGpioInstance).writeI2CRegisterByte(this->I2CHandleID, t_regAddr, t_byte);
 
 	clock_gettime(CLOCK_REALTIME, &spec);
-	end_mcs = round(spec.tv_nsec / 1.0e3); // Convert nanoseconds to microseconds
-	
+	end_mcs = (long) (spec.tv_nsec / 1000); // Convert nanoseconds to microseconds
+
 	std::cout << (end_mcs- start_mcs) << "\n";
 	if (result == 0) {
 		return 1;
