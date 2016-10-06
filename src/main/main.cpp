@@ -3,7 +3,7 @@
 #include <string>
 #include "../GPIO/IGpio/IGpio.h"
 #include "../FlightController/FlightController.h"
-#include "../Sensor/MPU6050/MPU6050.h"
+#include "../sensor/MPU6050/MPU6050.h"
 
 
 int main () {

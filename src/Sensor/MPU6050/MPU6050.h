@@ -9,7 +9,11 @@
 #include <unistd.h>
 #include "../../GPIO/I2C/I2CDevice.h"
 #include "../../GPIO/IGpio/IGpio.h"
-#include "../../helper/parseHelper.h"
+#include "../base/AxisData/AxisData.h"
+#include "../base/Accelerometer/Accelerometer.h"
+#include "../base/Gyrometer/Gyrometer.h"
+
+
 
 
 #define MPU_addr_0          0x68
@@ -122,17 +126,9 @@
 #define MPU6050_C_GyroRange        250  // +- 250 deg/sec
 
 
-struct axisData_int32 {
-	int X, Y, Z;
-	axisData_int32(): X(0), Y(0), Z(0) {}
-};
 
-struct axisData {
-	short X, Y, Z;
-	axisData(): X(0), Y(0), Z(0) {}
-};
 
-class MPU6050 : public  I2CDevice {
+class MPU6050 : public  I2CDevice, public GyrometerBase {
  public:
 	MPU6050(IGpio& t_IGpioInstance);
 	~MPU6050();
@@ -140,15 +136,15 @@ class MPU6050 : public  I2CDevice {
 	void wakeUp ();
 	void startLoop();
 
-
-	void calibrate();
-
  private:
  	axisData gyroData;
- 	axisData acceleratorData;
+ 	axisData accelerometerData;
 
  	void read();
  	void readAccelOffset();
+
+ 	void calculateOffsetMean(axisData_int32& t_gyroMean ,axisData_int32& t_accelMean);
+ 	void adjustOffset(short& t_offset, int t_offsetMean, int& axisCounter, unsigned int t_maxError, unsigned int t_scaleFactor, string t_name);
 
  	void writeGyroOffset(axisData& t_gyroMean);
  	void writeAccelOffset(axisData& t_accelMean);
