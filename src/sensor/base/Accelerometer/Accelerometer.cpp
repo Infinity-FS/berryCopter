@@ -40,7 +40,7 @@ void Accelerometer::calibrateAccelerometer() {
             usleep(this->calibrationMaxError);
         }
 
-        if (!this->adjustAccelerometerOffset()) {
+        if (!this->adjustAccelerometerOffset(offset)) {
             // no adjustment necessary
             break;
         }
@@ -58,7 +58,7 @@ bool Accelerometer::adjustAccelerometerOffset(axisData<short> &r_offset) {
         r_offset.X -= (int) ((this->meanAccelerometerAxisData).X * scaleFactor);
         std::cout << "| new accel.X " << r_offset.X << " (" << (this->meanAccelerometerAxisData).X << ") |";
     } else {
-        std::cout << "| accel.X OK at " << tmp_accelOffset.X << " (" << (this->meanAccelerometerAxisData).X << ") |";
+        std::cout << "| accel.X OK at " << r_offset.X << " (" << (this->meanAccelerometerAxisData).X << ") |";
         axisComplete++;
     }
     // Y
@@ -66,16 +66,16 @@ bool Accelerometer::adjustAccelerometerOffset(axisData<short> &r_offset) {
         r_offset.Y -= (int) ((this->meanAccelerometerAxisData).Y * scaleFactor);
         std::cout << "| new accel.Y " << r_offset.Y << " (" << (this->meanAccelerometerAxisData).Y << ") |";
     } else {
-        std::cout << "| accel.Y OK at " << tmp_accelOffset.Y << " (" << (this->meanAccelerometerAxisData).Y << ") |";
+        std::cout << "| accel.Y OK at " << r_offset.Y << " (" << (this->meanAccelerometerAxisData).Y << ") |";
         axisComplete++;
     }
     // Z
     int oneG_offsetRange = (pow(2, 15) / this->AccelerometerOffsetRange_G);
     if (abs(this->meanAccelerometerAxisData.Z - oneG_offsetRange) > this->calibrationMaxError) {
         r_offset.Z -= - oneG_offsetRange + ((this->meanAccelerometerAxisData).Z * scaleFactor) ;
-        std::cout << "| new accel.Z " << tmp_accelOffset.Z << " (" << (this->meanAccelerometerAxisData).Z << " @ " << (oneG_offsetRange - (this->meanAccelerometerAxisData).Z) <<") |";
+        std::cout << "| new accel.Z " << r_offset.Z << " (" << (this->meanAccelerometerAxisData).Z << " @ " << (oneG_offsetRange - (this->meanAccelerometerAxisData).Z) <<") |";
     } else {
-        std::cout << "| accel.Z OK at " << tmp_accelOffset.Z << " (" << (this->meanAccelerometerAxisData).Z << ") |";
+        std::cout << "| accel.Z OK at " << r_offset.Z << " (" << (this->meanAccelerometerAxisData).Z << ") |";
         axisComplete++;
     }
 

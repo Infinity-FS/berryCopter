@@ -9,7 +9,6 @@
 #include <unistd.h>
 #include "../../GPIO/I2C/I2CDevice.h"
 #include "../../GPIO/IGpio/IGpio.h"
-#include "../base/AxisData/AxisData.h"
 #include "../base/Accelerometer/Accelerometer.h"
 
 
