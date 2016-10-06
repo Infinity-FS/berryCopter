@@ -4,11 +4,9 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h> 
-#include <string>
-#include <unistd.h>
 #include "../../GPIO/I2C/I2CDevice.h"
 #include "../../GPIO/IGpio/IGpio.h"
+#include "../base/AxisData/AxisData.h"
 #include "../base/Accelerometer/Accelerometer.h"
 
 
@@ -126,7 +124,7 @@
 
 
 
-class MPU6050 : public  I2CDevice, public GyrometerBase {
+class MPU6050 : public  I2CDevice, public Accelerometer {
  public:
 	MPU6050(IGpio& t_IGpioInstance);
 	~MPU6050();

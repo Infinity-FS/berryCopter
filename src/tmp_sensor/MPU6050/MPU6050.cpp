@@ -46,13 +46,9 @@ void MPU6050::startLoop() {
 // PRIVATE
 // -------------------------------
 
-void MPU6050::read () {
-	int sizeToRead = 12;
+void MPU6050::readAccelerometer () {
+	int sizeToRead = 6;
 	unsigned int regAdrr [sizeToRead] = {
-		MPU6050_GYRO_XOUT_H, MPU6050_GYRO_XOUT_L, 
-		MPU6050_GYRO_YOUT_H, MPU6050_GYRO_YOUT_L, 
-		MPU6050_GYRO_ZOUT_H, MPU6050_GYRO_ZOUT_L,
-
 		MPU6050_ACCEL_XOUT_H, MPU6050_ACCEL_XOUT_L,
 		MPU6050_ACCEL_YOUT_H, MPU6050_ACCEL_YOUT_L,
 		MPU6050_ACCEL_ZOUT_H, MPU6050_ACCEL_ZOUT_L
@@ -61,21 +57,13 @@ void MPU6050::read () {
 	unsigned int result [sizeToRead] = {};
 	I2CDevice::readRegister(regAdrr, result, sizeToRead);
 
-	(this->gyroData).X = parseToShort((char) result[0], (char) result[1]);
-	(this->gyroData).Y = parseToShort((char) result[2], (char) result[3]);
-	(this->gyroData).Z = parseToShort((char) result[4], (char) result[5]);
-
-	(this->accelerometerData).X = parseToShort((char) result[6], (char) result[7]);
-	(this->accelerometerData).Y = parseToShort((char) result[8], (char) result[9]);
-	(this->accelerometerData).Z = parseToShort((char) result[10], (char) result[11]);
-
-	/*std::cout << "Gyro X: " << (this->gyroData).X << " Y: " << (this->gyroData).Y << " Z: " << (this->gyroData).Z;
-	std::cout << " Acc X: " << (this->accelerometerData).X << " Y: "  << (this->accelerometerData).Y << " Z: " << (this->accelerometerData).Z;
-	std::cout << "\n";*/
+	(this->accelerometerData).X = parseToShort((char) result[0], (char) result[1]);
+	(this->accelerometerData).Y = parseToShort((char) result[2], (char) result[3]);
+	(this->accelerometerData).Z = parseToShort((char) result[4], (char) result[5]);
 }
 
 // --------------------
-void MPU6050::readAccelOffset() {
+void MPU6050::readAccelerometerOffset() {
 	int sizeToRead = 6;
 	unsigned int regAdrr [sizeToRead] = {
 		MPU6050_ACCEL_XOFFS_USR_H, MPU6050_ACCEL_XOFFS_USR_L, 
