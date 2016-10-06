@@ -11,9 +11,7 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3222490-0981-4f87-9821-9635af5e86f5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sensor/base/Accelerometer/Accelerometer.cpp" afterPath="$PROJECT_DIR$/src/sensor/base/Accelerometer/Accelerometer.cpp" />
-    </list>
+    <list default="true" id="c3222490-0981-4f87-9821-9635af5e86f5" name="Default" comment="" />
     <ignored path="berryCopter.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,8 +43,8 @@
       <file leaf-file-name="Accelerometer.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sensor/base/Accelerometer/Accelerometer.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="57" column="108" selection-start-line="57" selection-start-column="108" selection-end-line="57" selection-end-column="108" />
+            <state relative-caret-position="378">
+              <caret line="70" column="12" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -551,12 +549,12 @@
       <option name="presentableId" value="Default" />
       <updated>1475661035231</updated>
       <workItem from="1475661037806" duration="8789000" />
-      <workItem from="1475779282348" duration="4768000" />
+      <workItem from="1475779282348" duration="4804000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13557000" />
+    <option name="totallyTimeSpent" value="13593000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1436" height="877" extended-state="6" />
@@ -772,8 +770,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sensor/base/Accelerometer/Accelerometer.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="57" column="108" selection-start-line="57" selection-start-column="108" selection-end-line="57" selection-end-column="108" />
+        <state relative-caret-position="378">
+          <caret line="70" column="12" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="12" />
           <folding />
         </state>
       </provider>
