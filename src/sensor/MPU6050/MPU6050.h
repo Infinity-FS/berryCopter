@@ -9,6 +9,7 @@
 #include "../base/AxisData/AxisData.h"
 #include "../base/Accelerometer/Accelerometer.h"
 #include <unistd.h>
+#include <math.h>
 
 
 

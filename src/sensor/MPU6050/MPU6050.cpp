@@ -4,7 +4,7 @@
 // FlightController constructor
 MPU6050::MPU6050 (int t_AccelerometerRange_G, IGpio& t_IGpioInstance):
 I2CDevice (0x68, 1, t_IGpioInstance),
-Accelerometer(t_AccelerometerRange_G ,16, 1000, 2000, 50)
+Accelerometer(t_AccelerometerRange_G ,16, 1000, 2000, (int) (0.5 * (pow(2, 15)/ (double) t_AccelerometerRange_G))) // 0.5 % of G max noise
 {
 }
 // --------------------
