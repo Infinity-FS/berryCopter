@@ -27,14 +27,16 @@ void MPU6050::wakeUp () {
 // --------------------
 
 void MPU6050::startLoop() {
+    int i = 0;
 	for(;;){
 		this->readAccelerometer();
-
-		std::cout<< "Accel: ";
-		std::cout << "X "<< (this->accelerometerAxisData).X << ", ";
-		std::cout << "Y "<< (this->accelerometerAxisData).Y << ", ";
-		std::cout << "Z "<< (this->accelerometerAxisData).Z << "\n";
-		usleep(2000 * 1000); 
+        i++;
+        if(i%1000 == 0){
+            std::cout<< "Accel: ";
+            std::cout << "X "<< (this->accelerometerAxisData).X << ", ";
+            std::cout << "Y "<< (this->accelerometerAxisData).Y << ", ";
+            std::cout << "Z "<< (this->accelerometerAxisData).Z << "\n";
+        }
 	}
 }
 
