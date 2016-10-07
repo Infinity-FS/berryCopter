@@ -13,7 +13,10 @@ int main () {
 	//flightCtrl.programMotors();
 	MPU6050 mpu6050 (2, 250, IGpioInstance);
 	mpu6050.wakeUp();
+	
 	mpu6050.calibrateAccelerometer();
+	mpu6050.calibrateGyrometer();
+
 	mpu6050.startLoop();
 
 	return 0;
