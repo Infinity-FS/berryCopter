@@ -39,6 +39,11 @@ void MPU6050::startLoop() {
         // < LOOP
 
 		this->readAccelerometer();
+        this->readAccelerometer();
+        this->readAccelerometer();
+        this->readAccelerometer();
+        this->readAccelerometer();
+
         i++;
 
         // > LOOP
