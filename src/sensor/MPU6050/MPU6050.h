@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include "../../GPIO/I2C/I2CDevice.h"
 #include "../../GPIO/IGpio/IGpio.h"
-#include "../base/Vector3/Vector3.h"
+#include "../base/Vector/Vector3.h"
 #include "../base/Accelerometer/Accelerometer.h"
 #include "../base/Gyrometer/Gyrometer.h"
 #include <unistd.h>

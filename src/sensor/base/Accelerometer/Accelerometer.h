@@ -1,7 +1,7 @@
 #ifndef __ACCELERATOR_H_INCLUDED__
 #define __ACCELERATOR_H_INCLUDED__
 
-#include "../Vector3/Vector3.h"
+#include "../Vector/Vector3.h"
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
