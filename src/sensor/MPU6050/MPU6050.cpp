@@ -49,7 +49,8 @@ void MPU6050::startLoop() {
             std::cout << "X "<< (this->accelerometerAxisData).X << ", ";
             std::cout << "Y "<< (this->accelerometerAxisData).Y << ", ";
             std::cout << "Z "<< (this->accelerometerAxisData).Z << " ";
-            std::cout << "loop took: " << ((long) ((end_ns - start_ns) / 1000)) << "\n";
+
+            std::cout << "loop Hz: " << ((1e9) / (end_ns - start_ns)) << "Hz \n";
         }
 	}
 }
