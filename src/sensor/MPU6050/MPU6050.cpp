@@ -30,7 +30,6 @@ void MPU6050::startLoop() {
 
     long start_ns = 0; // NanoSec
     long end_ns = 0;
-    long dif_ns = 0;
     struct timespec spec;
 
     int i = 0;
@@ -50,7 +49,7 @@ void MPU6050::startLoop() {
             std::cout << "X "<< (this->accelerometerAxisData).X << ", ";
             std::cout << "Y "<< (this->accelerometerAxisData).Y << ", ";
             std::cout << "Z "<< (this->accelerometerAxisData).Z << " ";
-            std::cout << "loop took: " << ((long) ((end_ns - start_ns) / 1000000)) << "\n";
+            std::cout << "loop took: " << ((long) ((end_ns - start_ns) / 1000)) << "\n";
         }
 	}
 }
