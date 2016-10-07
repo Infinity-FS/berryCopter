@@ -11,7 +11,7 @@ int main () {
 
 	FlightController flightCtrl (IGpioInstance);
 	//flightCtrl.programMotors();
-	MPU6050 mpu6050 (4, 500, IGpioInstance);
+	MPU6050 mpu6050 (16, 2000, IGpioInstance);
 	mpu6050.wakeUp();
 
 	mpu6050.calibrateAccelerometer();
