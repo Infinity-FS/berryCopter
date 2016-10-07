@@ -120,9 +120,6 @@
 #define MPU6050_FIFO_R_W           0x74   // R/W
 #define MPU6050_WHO_AM_I           0x75   // R
 
-// config Values
-#define MPU6050_C_AccelRange       2 	// +- 2 g
-#define MPU6050_C_GyroRange        250  // +- 250 deg/sec
 
 
 
