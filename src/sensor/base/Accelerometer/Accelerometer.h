@@ -1,7 +1,7 @@
 #ifndef __ACCELERATOR_H_INCLUDED__
 #define __ACCELERATOR_H_INCLUDED__
 
-#include "../AxisData/AxisData.h"
+#include "../Vector3/Vector3.h"
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,23 +17,23 @@ class Accelerometer {
         void updateAccelerometerMean();
 
 
-        axisData<short> getAccelerometerAxisData();
+        Vector3<short> getAccelerometerVector3();
         short getAccelerometerRange_G();
 
         virtual void readAccelerometer() = 0;
-        virtual void readAccelerometerOffset(axisData<short> &t_offset) = 0;
-        virtual void writeAccelerometerOffset (axisData<short> &t_offset) = 0;
+        virtual void readAccelerometerOffset(Vector3<short> &t_offset) = 0;
+        virtual void writeAccelerometerOffset (Vector3<short> &t_offset) = 0;
 
     protected:
-        axisData<short> accelerometerAxisData;
-        axisData<double> meanAccelerometerAxisData;
+        Vector3<short> accelerometerVector3;
+        Vector3<double> meanAccelerometerVector3;
 
         short AccelerometerRange_G, AccelerometerOffsetRange_G; // in G
 
     private:
         int calibrationMeanIterations, calibrationMeanDelay, calibrationMaxError;
 
-        bool adjustAccelerometerOffset(axisData<short> &r_offset);
+        bool adjustAccelerometerOffset(Vector3<short> &r_offset);
 };
 
 #endif // __ACCELERATOR_H_INCLUDED__

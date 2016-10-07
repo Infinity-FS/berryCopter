@@ -6,8 +6,9 @@
 #include <stdlib.h>
 #include "../../GPIO/I2C/I2CDevice.h"
 #include "../../GPIO/IGpio/IGpio.h"
-#include "../base/AxisData/AxisData.h"
+#include "../base/Vector3/Vector3.h"
 #include "../base/Accelerometer/Accelerometer.h"
+#include "../base/Gyrometer/Gyrometer.h"
 #include <unistd.h>
 #include <math.h>
 #include <time.h>
@@ -126,7 +127,7 @@
 
 
 
-class MPU6050 : public  I2CDevice, public Accelerometer {
+class MPU6050 : public  I2CDevice, public Accelerometer, public Gyrometer {
  public:
 	MPU6050(int t_AccelerometerRange_G, IGpio& t_IGpioInstance);
 	~MPU6050();
@@ -136,8 +137,12 @@ class MPU6050 : public  I2CDevice, public Accelerometer {
 
  private:
  	void readAccelerometer();
- 	void readAccelerometerOffset(axisData<short> &t_offset);
- 	void writeAccelerometerOffset (axisData<short> &t_offset);
+ 	void readAccelerometerOffset(Vector3<short> &t_offset);
+ 	void writeAccelerometerOffset (Vector3<short> &t_offset);
+
+    void readGyrometer();
+    void readGyrometer(Vector3<short> &t_offset);
+    void writeGyrometer (Vector3<short> &t_offset);
 
 };
 

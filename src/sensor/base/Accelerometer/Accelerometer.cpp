@@ -12,15 +12,15 @@ Accelerometer::Accelerometer(short t_AccelerometerRange_G, short t_Accelerometer
 // ---------
 // updateMean
 void Accelerometer::updateAccelerometerMean() {
-    this->meanAccelerometerAxisData.X = (this->accelerometerAxisData.X + this->meanAccelerometerAxisData.X) / 2;
-    this->meanAccelerometerAxisData.Y = (this->accelerometerAxisData.Y + this->meanAccelerometerAxisData.Y) / 2;
-    this->meanAccelerometerAxisData.Z = (this->accelerometerAxisData.Z + this->meanAccelerometerAxisData.Z) / 2;
+    this->meanAccelerometerVector3.X = (this->accelerometerVector3.X + this->meanAccelerometerVector3.X) / 2;
+    this->meanAccelerometerVector3.Y = (this->accelerometerVector3.Y + this->meanAccelerometerVector3.Y) / 2;
+    this->meanAccelerometerVector3.Z = (this->accelerometerVector3.Z + this->meanAccelerometerVector3.Z) / 2;
 }
 
 // ----------
 // calibration
 void Accelerometer::calibrateAccelerometer() {
-    axisData<short> offset;
+    Vector3<short> offset;
 
     int trial = 0;
     while (true) {
@@ -29,14 +29,14 @@ void Accelerometer::calibrateAccelerometer() {
 
         this->writeAccelerometerOffset(offset);
 
-        this->meanAccelerometerAxisData.X = 0;
-        this->meanAccelerometerAxisData.Y = 0;
-        this->meanAccelerometerAxisData.Z = 0;
+        this->meanAccelerometerVector3.X = 0;
+        this->meanAccelerometerVector3.Y = 0;
+        this->meanAccelerometerVector3.Z = 0;
 
         // read data within x ms time interval
         unsigned int i;
         for (i = 0; i < (unsigned int) this->calibrationMeanIterations; i++) {
-            // reads data and updates accelAxisData
+            // reads data and updates accelVector3
             this->readAccelerometer();
             this->updateAccelerometerMean();
 
@@ -52,34 +52,34 @@ void Accelerometer::calibrateAccelerometer() {
 
 
 
-bool Accelerometer::adjustAccelerometerOffset(axisData<short> &r_offset) {
+bool Accelerometer::adjustAccelerometerOffset(Vector3<short> &r_offset) {
     int axisComplete = 0;
 
     double scaleFactor = ((double) this->AccelerometerRange_G) / ((double) this->AccelerometerOffsetRange_G); // If the offset has another range as the measured data
     // X
-    if (abs(this->meanAccelerometerAxisData.X) > this->calibrationMaxError) {
-        r_offset.X -= (int) ( ((double) (this->meanAccelerometerAxisData).X) * scaleFactor);
-        std::cout << "| new accel.X " << r_offset.X << " (" << (this->meanAccelerometerAxisData).X << ") |";
+    if (abs(this->meanAccelerometerVector3.X) > this->calibrationMaxError) {
+        r_offset.X -= (int) ( ((double) (this->meanAccelerometerVector3).X) * scaleFactor);
+        std::cout << "| new accel.X " << r_offset.X << " (" << (this->meanAccelerometerVector3).X << ") |";
     } else {
-        std::cout << "| accel.X OK at " << r_offset.X << " (" << (this->meanAccelerometerAxisData).X << ") |";
+        std::cout << "| accel.X OK at " << r_offset.X << " (" << (this->meanAccelerometerVector3).X << ") |";
         axisComplete++;
     }
     // Y
-    if (abs(this->meanAccelerometerAxisData.Y) > this->calibrationMaxError) {
-        r_offset.Y -= (int) ( ((double) (this->meanAccelerometerAxisData).Y) * scaleFactor);
-        std::cout << "| new accel.Y " << r_offset.Y << " (" << (this->meanAccelerometerAxisData).Y << ") |";
+    if (abs(this->meanAccelerometerVector3.Y) > this->calibrationMaxError) {
+        r_offset.Y -= (int) ( ((double) (this->meanAccelerometerVector3).Y) * scaleFactor);
+        std::cout << "| new accel.Y " << r_offset.Y << " (" << (this->meanAccelerometerVector3).Y << ") |";
     } else {
-        std::cout << "| accel.Y OK at " << r_offset.Y << " (" << (this->meanAccelerometerAxisData).Y << ") |";
+        std::cout << "| accel.Y OK at " << r_offset.Y << " (" << (this->meanAccelerometerVector3).Y << ") |";
         axisComplete++;
     }
     // Z
     int oneG_offsetRange = (pow(2, 15) / this->AccelerometerOffsetRange_G);
     int oneG = (pow(2, 15) / this->AccelerometerRange_G);
-    if (abs(this->meanAccelerometerAxisData.Z - oneG) > this->calibrationMaxError) {
-        r_offset.Z -= - oneG_offsetRange + ( ((double) (this->meanAccelerometerAxisData).Z) * scaleFactor) ;
-        std::cout << "| new accel.Z " << r_offset.Z << " (" << (this->meanAccelerometerAxisData).Z << " @ " << (oneG - (this->meanAccelerometerAxisData).Z) <<") |";
+    if (abs(this->meanAccelerometerVector3.Z - oneG) > this->calibrationMaxError) {
+        r_offset.Z -= - oneG_offsetRange + ( ((double) (this->meanAccelerometerVector3).Z) * scaleFactor) ;
+        std::cout << "| new accel.Z " << r_offset.Z << " (" << (this->meanAccelerometerVector3).Z << " @ " << (oneG - (this->meanAccelerometerVector3).Z) <<") |";
     } else {
-        std::cout << "| accel.Z OK at " << r_offset.Z << " (" << (this->meanAccelerometerAxisData).Z << ") |";
+        std::cout << "| accel.Z OK at " << r_offset.Z << " (" << (this->meanAccelerometerVector3).Z << ") |";
         axisComplete++;
     }
     std::cout << "\n";
@@ -93,8 +93,8 @@ bool Accelerometer::adjustAccelerometerOffset(axisData<short> &r_offset) {
 
 // ----------
 // getters
-axisData<short> Accelerometer::getAccelerometerAxisData() {
-    return this->accelerometerAxisData;
+Vector3<short> Accelerometer::getAccelerometerVector3() {
+    return this->accelerometerVector3;
 }
 
 short Accelerometer::getAccelerometerRange_G() {
