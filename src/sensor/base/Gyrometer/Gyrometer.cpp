@@ -2,7 +2,7 @@
 
 Gyrometer::Gyrometer(short t_GyrometerRange, short t_GyrometerOffsetRange, int t_calibrationMeanIterations, int t_calibrationMeanDelay, int t_calibrationMaxError) :
         GyrometerRange(t_GyrometerRange),
-        GyrometerOffsetRange_G(t_GyrometerOffsetRange),
+        GyrometerOffsetRange(t_GyrometerOffsetRange),
         calibrationMeanIterations(t_calibrationMeanIterations),
         calibrationMeanDelay(t_calibrationMeanDelay),
         calibrationMaxError(t_calibrationMaxError)
@@ -55,7 +55,7 @@ void Gyrometer::calibrateGyrometer() {
 bool Gyrometer::adjustGyrometerOffset(Vector3<short> &r_offset) {
     int axisComplete = 0;
 
-    double scaleFactor = ((double) this->GyrometerRange) / ((double) this->GyrometerOffsetRange_G); // If the offset has another range as the measured data
+    double scaleFactor = ((double) this->GyrometerRange) / ((double) this->GyrometerOffsetRange); // If the offset has another range as the measured data
     // X
     if (abs(this->meanGyrometerVector3.X) > this->calibrationMaxError) {
         r_offset.X -= (int) ( ((double) (this->meanGyrometerVector3).X) * scaleFactor);
