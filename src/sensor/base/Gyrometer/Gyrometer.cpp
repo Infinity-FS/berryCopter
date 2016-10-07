@@ -12,9 +12,9 @@ Gyrometer::Gyrometer(short t_GyrometerRange, short t_GyrometerOffsetRange, int t
 // ---------
 // updateMean
 void Gyrometer::updateGyrometerMean() {
-    this->meanGyrometerVector3.X = (this->GyrometerVector3.X + this->meanGyrometerVector3.X) / 2;
-    this->meanGyrometerVector3.Y = (this->GyrometerVector3.Y + this->meanGyrometerVector3.Y) / 2;
-    this->meanGyrometerVector3.Z = (this->GyrometerVector3.Z + this->meanGyrometerVector3.Z) / 2;
+    this->meanGyrometerVector3.X = (this->gyrometerVector3.X + this->meanGyrometerVector3.X) / 2;
+    this->meanGyrometerVector3.Y = (this->gyrometerVector3.Y + this->meanGyrometerVector3.Y) / 2;
+    this->meanGyrometerVector3.Z = (this->gyrometerVector3.Z + this->meanGyrometerVector3.Z) / 2;
 }
 
 // ----------

@@ -129,7 +129,7 @@
 
 class MPU6050 : public  I2CDevice, public Accelerometer, public Gyrometer {
  public:
-	MPU6050(int t_AccelerometerRange_G, IGpio& t_IGpioInstance);
+	MPU6050(int t_AccelerometerRange_G, int t_GyrometerRange, IGpio& t_IGpioInstance);
 	~MPU6050();
 
 	void wakeUp ();
@@ -141,8 +141,8 @@ class MPU6050 : public  I2CDevice, public Accelerometer, public Gyrometer {
  	void writeAccelerometerOffset (Vector3<short> &t_offset);
 
     void readGyrometer();
-    void readGyrometer(Vector3<short> &t_offset);
-    void writeGyrometer (Vector3<short> &t_offset);
+    void readGyrometerOffset(Vector3<short> &t_offset);
+    void writeGyrometerOffset (Vector3<short> &t_offset);
 
 };
 

@@ -189,7 +189,7 @@ void MPU6050::readGyrometerOffset(Vector3<short> &t_offset) {
 
 
 // --------------------
-void MPU6050::writeAccelerometerOffset (Vector3<short> &t_offset){
+void MPU6050::writeGyrometerOffset (Vector3<short> &t_offset){
     I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_H, (unsigned int) ((t_offset.X >> 8) & 0xff) );
     I2CDevice::writeRegister(MPU6050_GYRO_XOFFS_USR_L, (unsigned int) (t_offset.X & 0xff) );
 
