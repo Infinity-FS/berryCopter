@@ -52,14 +52,14 @@ int I2CDevice::writeRegister(unsigned int t_regAddr, unsigned int t_byte) {
 	struct timespec spec;
 
 	clock_gettime(CLOCK_REALTIME, &spec);
-	start_mcs = (long) (spec.tv_nsec / 1000); // Convert nanoseconds to microseconds
+	start_mcs = (long) (spec.tv_nsec / 1000); // Convert nanoseconds to microseconds*/
 
-	int result = (this->IGpioInstance).writeI2CRegisterByte(this->I2CHandleID, t_regAddr, t_byte);*/
+	int result = (this->IGpioInstance).writeI2CRegisterByte(this->I2CHandleID, t_regAddr, t_byte);
 
-	clock_gettime(CLOCK_REALTIME, &spec);
+	/*clock_gettime(CLOCK_REALTIME, &spec);
 	end_mcs = (long) (spec.tv_nsec / 1000); // Convert nanoseconds to microseconds
 
-	/*std::cout << "WRITE one byte took: " << (end_mcs- start_mcs) << "\n";*/
+	std::cout << "WRITE one byte took: " << (end_mcs- start_mcs) << "\n";*/
 	if (result == 0) {
 		return 1;
 	} else {
