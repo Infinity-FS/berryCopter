@@ -56,6 +56,7 @@ int main () {
         clock_gettime(CLOCK_REALTIME, &spec);
         end_ns = (long) (spec.tv_nsec);
         if(i%1000 == 0){
+            std::cout<<(double) dt_ns / (double) 1e9<<"\n";
             std::cout<< "Accel: ";
             std::cout << "X "<< (mpu6050.getAccelerometerVector3()).X << ", ";
             std::cout << "Y "<< (mpu6050.getAccelerometerVector3()).Y << ", ";
