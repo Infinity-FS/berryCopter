@@ -10,7 +10,7 @@ class KalmanGyroAngleFilter {
 public:
     KalmanGyroAngleFilter(double t_startAngle, double t_Q_angle, double t_Q_bias, double t_R_noise);
 
-    void applyFilter(double measuredAngle, double dt);
+    void applyFilter(double measuredRate, double dt);
 
     double getAngle();
 private:

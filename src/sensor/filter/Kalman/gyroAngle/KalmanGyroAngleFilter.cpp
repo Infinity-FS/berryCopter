@@ -23,7 +23,7 @@ KalmanGyroAngleFilter::KalmanGyroAngleFilter(double t_startAngle, double t_Q_ang
     this->F[1][1] = 0;
 }
 
-void KalmanGyroAngleFilter::applyFilter(double measuredAngle, double dt){
+void KalmanGyroAngleFilter::applyFilter(double measuredRate, double dt){
     //  2D kalman filter
 
     // PREDICTION
@@ -44,7 +44,7 @@ void KalmanGyroAngleFilter::applyFilter(double measuredAngle, double dt){
                     this->P[1][0]/ this->P[0][0]+ R_noise};
 
     // (4) update X with measurement --> X(i) = X(i) + K * (z - H * X(i))
-    double innovation = (measuredAngle - this->angle);
+    double innovation = measuredRate * dt;
     this->angle += K[0] * innovation;
     this->bias += K[1] * innovation;
 
