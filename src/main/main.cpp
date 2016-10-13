@@ -42,11 +42,13 @@ int main () {
         mpu6050.readGyrometer();
 
         Vector3<double> curDegSec = mpu6050.getGyrometerVector3_deg_s();
+        clock_gettime(CLOCK_REALTIME, &spec);
         if(i==0){
             dt_ns = (long) (spec.tv_nsec);
         } else {
-            clock_gettime(CLOCK_REALTIME, &spec);
             dt_ns = (long) (spec.tv_nsec) - dt_ns;
+            std::cout<<((double) dt_ns / (double) 1e9<<"\n";
+
             angleFilter_X.applyFilter(curDegSec.X, (double) dt_ns / (double) 1e9);
         }
 
@@ -56,7 +58,6 @@ int main () {
         clock_gettime(CLOCK_REALTIME, &spec);
         end_ns = (long) (spec.tv_nsec);
         if(i%1000 == 0){
-            std::cout<<(double) dt_ns / (double) 1000000000<<"\n";
             std::cout<< "Accel: ";
             std::cout << "X "<< (mpu6050.getAccelerometerVector3()).X << ", ";
             std::cout << "Y "<< (mpu6050.getAccelerometerVector3()).Y << ", ";
