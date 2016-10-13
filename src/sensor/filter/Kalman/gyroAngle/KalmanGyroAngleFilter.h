@@ -6,7 +6,7 @@
 #define __KALMANGYROANGLEFILTER_H_INCLUDED__
 
 
-class KalmanGyroAngleFilter : public MeasureFilter {
+class KalmanGyroAngleFilter {
 public:
     KalmanGyroAngleFilter(double t_startAngle, double t_Q_angle, double t_Q_bias, double t_R_noise);
 
