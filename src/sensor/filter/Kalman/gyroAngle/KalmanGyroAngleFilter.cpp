@@ -6,7 +6,6 @@
 
 KalmanGyroAngleFilter::KalmanGyroAngleFilter(double t_startAngle, double t_Q_angle, double t_Q_bias, double t_R_noise):
     bias(0),
-    u(0),
     angle(t_startAngle),
     Q_angle(t_Q_angle),
     Q_bias(t_Q_bias),
@@ -28,7 +27,7 @@ void KalmanGyroAngleFilter::applyFilter(double measuredRate, double dt){
 
     // PREDICTION
     // (1) State Projection --> X(i+1) = F * X(i) + Bu
-    this->angle += dt * (this->u - this->bias);
+    this->angle += dt * (measuredRate - this->bias);
 
     // (2) Project err. cov. m. P --> P(i+1) = F * P(i) * F^T + Q
     this->P[0][0] += dt * (dt * this->P[1][1] - this->P[1][0] - this->P[0][1] + this->Q_angle);
@@ -51,7 +50,7 @@ void KalmanGyroAngleFilter::applyFilter(double measuredRate, double dt){
     double innovation = measuredRate * dt;
     this->angle += K[0] * innovation;
     this->bias += K[1] * innovation;
-    
+
     // (5) update P --> P(i) = (I - K * H) * P(i)
     float P00_tmp = P[0][0];
     float P01_tmp = P[0][1];

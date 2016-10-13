@@ -36,9 +36,6 @@ private:
     // 1    -dt
     // 0    1
 
-    // control input value u
-    double u; // deg/s
-
     // Measure noise m. R
     double R_noise;
     // R_g
