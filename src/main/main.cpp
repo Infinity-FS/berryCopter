@@ -27,7 +27,9 @@ int main() {
 
     struct timespec spec;
     clock_gettime(CLOCK_REALTIME, &spec);
-    long dt_ns = (long) (spec.tv_nsec);
+    long start_ns = (long) (spec.tv_nsec);
+    long end_ns = 0;
+    long dt_ns = 0;
 
     int i = 0;
     for (;;) {
@@ -39,8 +41,9 @@ int main() {
         Vector3<double> curDegSec = mpu6050.getGyrometerVector3_deg_s();
 
         clock_gettime(CLOCK_REALTIME, &spec);
-        dt_ns = (long) (spec.tv_nsec) - dt_ns;
-        std::cout << "dt_ns: " << (double) dt_ns << "  " << dt_ns << "\n";
+        end_ns = (long) (spec.tv_nsec);
+        dt_ns = end_ns - start_ns;
+        std::cout << "dt_ns: " << (double) dt_ns << "\n";
 
         angleFilter_X.applyFilter(curDegSec.X, (double) dt_ns / (double) 1e9);
 
@@ -61,6 +64,8 @@ int main() {
 
             std::cout << "loop Hz: " << ((1e9) / (dt_ns)) << "Hz \n";
         }
+        clock_gettime(CLOCK_REALTIME, &spec);
+        start_ns = (long) (spec.tv_nsec);
     }
 
     return 0;
