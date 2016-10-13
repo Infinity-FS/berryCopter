@@ -4,7 +4,7 @@
 
 #include "KalmanGyroAngleFilter.h"
 
-KalmanGyroAngleFilter::KalmanGyroAngleFilter(double t_startAngle, double t_Q_angle, double t_Q_bias, double t_R_noise): MeasureFilter(),
+KalmanGyroAngleFilter::KalmanGyroAngleFilter(double t_startAngle, double t_Q_angle, double t_Q_bias, double t_R_noise):
     bias(0),
     u(0),
     angle(t_startAngle),

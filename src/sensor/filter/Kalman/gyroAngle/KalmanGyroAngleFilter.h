@@ -5,7 +5,6 @@
 #ifndef __KALMANGYROANGLEFILTER_H_INCLUDED__
 #define __KALMANGYROANGLEFILTER_H_INCLUDED__
 
-#include "../../base/MeasureFilter.h"
 
 class KalmanGyroAngleFilter : public MeasureFilter {
 public:
