@@ -62,7 +62,7 @@ int main () {
             std::cout << "Z "<< (mpu6050.getAccelerometerVector3()).Z << " >";
 
             std::cout<< "< Gyro: ";
-            std::cout << "X "<< curDegSec.X << " @ " << angleFilter_X.getAngle() << ", ";
+            std::cout << "X "<< (mpu6050.getGyrometerVector3()).X << " " << curDegSec.X << " @ " << angleFilter_X.getAngle() << ", ";
             std::cout << "Y "<< curDegSec.Y << ", ";
             std::cout << "Z "<< curDegSec.Z << " >";
 
