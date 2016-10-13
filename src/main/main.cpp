@@ -41,7 +41,7 @@ int main () {
         mpu6050.readAccelerometer();
         mpu6050.readGyrometer();
 
-        Vector3<double> curDegSec = mpu6050.getGyrometerVector3_deg_s().X;
+        Vector3<double> curDegSec = mpu6050.getGyrometerVector3_deg_s();
         if(i==0){
             dt_ns = (long) (spec.tv_nsec);
         } else {
