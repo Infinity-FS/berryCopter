@@ -34,7 +34,7 @@ void KalmanGyroAngleFilter::applyFilter(double measuredRate, double dt){
     this->P[0][0] += dt * (dt * this->P[1][1] - this->P[1][0] - this->P[0][1] + this->Q_angle);
     this->P[0][1] += -dt * this->P[1][1];
     this->P[1][0] += -dt * this->P[1][1];
-    this->P[1][1] = this->P[1][1] + this->Q_bias;
+    this->P[1][1] += dt * this->Q_bias;
 
     // i = i+1;
 
@@ -45,7 +45,6 @@ void KalmanGyroAngleFilter::applyFilter(double measuredRate, double dt){
 
     // (4) update X with measurement --> X(i) = X(i) + K * (z - H * X(i))
     double innovation = measuredRate * dt;
-    //std::cout << innovation << "\n";
     this->angle += K[0] * innovation;
     this->bias += K[1] * innovation;
 
