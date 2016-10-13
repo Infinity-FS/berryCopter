@@ -43,7 +43,6 @@ int main() {
         clock_gettime(CLOCK_REALTIME, &spec);
         end_ns = (long) (spec.tv_nsec);
         dt_ns = end_ns - start_ns;
-        std::cout << "dt_ns: " << (double) dt_ns << "\n";
 
         angleFilter_X.applyFilter(curDegSec.X, (double) dt_ns / (double) 1e9);
 
