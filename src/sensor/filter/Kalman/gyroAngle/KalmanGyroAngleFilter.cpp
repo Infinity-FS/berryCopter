@@ -28,7 +28,7 @@ void KalmanGyroAngleFilter::applyFilter(double measuredRate, double dt){
 
     // PREDICTION
     // (1) State Projection --> X(i+1) = F * X(i) + Bu
-    this->angle += dt * (this->u - this->bias);
+    this->angle += dt * (this->u);
 
     // (2) Project err. cov. m. P --> P(i+1) = F * P(i) * F^T + Q
     this->P[0][0] += dt * (dt * this->P[1][1] - this->P[1][0] - this->P[0][1] + this->Q_angle);
