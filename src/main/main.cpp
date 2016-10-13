@@ -48,8 +48,9 @@ int main() {
 
         i++;
 
+        std::cout << angleFilter_X.getAngle() << "\n";
         // > LOOP
-        if (i % 1000 == 0) {
+        if (i % 1000000 == 0) {
             std::cout << "Accel: ";
             std::cout << "X " << (mpu6050.getAccelerometerVector3()).X << ", ";
             std::cout << "Y " << (mpu6050.getAccelerometerVector3()).Y << ", ";
