@@ -47,7 +47,7 @@ int main () {
         } else {
             clock_gettime(CLOCK_REALTIME, &spec);
             dt_ns = (long) (spec.tv_nsec) - dt_ns;
-            angleFilter_X.applyFilter(curDegSec.X);
+            angleFilter_X.applyFilter(curDegSec.X, (double) dt_ns / (double) 1e9);
         }
 
         i++;
