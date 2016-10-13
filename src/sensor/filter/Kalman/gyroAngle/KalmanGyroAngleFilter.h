@@ -5,8 +5,7 @@
 #ifndef __KALMANGYROANGLEFILTER_H_INCLUDED__
 #define __KALMANGYROANGLEFILTER_H_INCLUDED__
 
-
-#include <stdio.h>
+#include <iostream>
 
 
 class KalmanGyroAngleFilter {
