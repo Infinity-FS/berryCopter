@@ -47,7 +47,7 @@ int main () {
             dt_ns = (long) (spec.tv_nsec);
         } else {
             dt_ns = (long) (spec.tv_nsec) - dt_ns;
-            std::cout<<((double) dt_ns / (double) 1e9<<"\n");
+            std::cout<<((double) dt_ns<<"\n");
 
             angleFilter_X.applyFilter(curDegSec.X, (double) dt_ns / (double) 1e9);
         }
