@@ -131,6 +131,7 @@ class MPU6050 : public  I2CDevice, public Accelerometer, public Gyrometer {
 
 	void wakeUp ();
 	void startLoop();
+    virtual Vector3<double> getGyrometerVector3_deg_s();
 
  private:
  	void readAccelerometer();

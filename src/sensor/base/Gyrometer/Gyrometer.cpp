@@ -98,3 +98,6 @@ Vector3<short> Gyrometer::getGyrometerVector3() {
 short Gyrometer::getGyrometerRange() {
     return this->GyrometerRange;
 }
+
+// ---------
+// setters

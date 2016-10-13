@@ -14,21 +14,24 @@ class Gyrometer {
         virtual ~Gyrometer() {}
 
         void calibrateGyrometer();
-        void updateGyrometerMean();
-
 
         Vector3<short> getGyrometerVector3();
+
         short getGyrometerRange();
 
         virtual void readGyrometer() = 0;
         virtual void readGyrometerOffset(Vector3<short> &t_offset) = 0;
         virtual void writeGyrometerOffset (Vector3<short> &t_offset) = 0;
+        virtual Vector3<double> getGyrometerVector3_deg_s();
 
     protected:
+
         Vector3<short> gyrometerVector3;
         Vector3<double> meanGyrometerVector3;
 
         short GyrometerRange, GyrometerOffsetRange; // in G
+
+        void updateGyrometerMean();
 
     private:
         int calibrationMeanIterations, calibrationMeanDelay, calibrationMaxError;
