@@ -40,8 +40,8 @@ void KalmanGyroAngleFilter::applyFilter(double measuredRate, double dt){
 
     // CORRECTION
     // (3) KALMAN GAIN K --> P(i) * H^T * (H * P(i) H^T + R)^-1
-    double K[2] = {  this->P[0][0]/ this->P[0][0]+ R_noise,
-                    this->P[1][0]/ this->P[0][0]+ R_noise};
+    double K[2] = {  this->P[0][0]/ (this->P[0][0]+ R_noise),
+                    this->P[1][0]/ (this->P[0][0]+ R_noise)};
 
     // (4) update X with measurement --> X(i) = X(i) + K * (z - H * X(i))
     double innovation = measuredRate * dt;
