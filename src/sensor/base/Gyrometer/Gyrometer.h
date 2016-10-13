@@ -22,7 +22,7 @@ class Gyrometer {
         virtual void readGyrometer() = 0;
         virtual void readGyrometerOffset(Vector3<short> &t_offset) = 0;
         virtual void writeGyrometerOffset (Vector3<short> &t_offset) = 0;
-        virtual Vector3<double> getGyrometerVector3_deg_s();
+        virtual Vector3<double> getGyrometerVector3_deg_s() = 0;
 
     protected:
 
