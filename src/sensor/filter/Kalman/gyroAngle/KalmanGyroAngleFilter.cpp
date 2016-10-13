@@ -34,11 +34,11 @@ void KalmanGyroAngleFilter::applyFilter(double measuredRate, double dt){
     this->P[0][1] += -dt * this->P[1][1];
     this->P[1][0] += -dt * this->P[1][1];
     this->P[1][1] += dt * this->Q_bias;
-
+/*
     std::cout << " + PREDICTION " ;
     std::cout << " X (a: " << this->angle << " b: " << this->bias << ") " << " dt " << dt << "; ";
     std::cout << " P (00: " << this->P[0][0] << " 01: " << this->P[0][1] << "11: " << this->P[1][1] << " 11: " << this->P[1][1] << ") ";
-
+*/
     // i = i+1;
 
     // CORRECTION
@@ -60,11 +60,11 @@ void KalmanGyroAngleFilter::applyFilter(double measuredRate, double dt){
     this->P[1][0] -= K[1] * P00_tmp;
     this->P[1][1] -= K[1] * P01_tmp;
 
-    std::cout << " + CORRECTION " ;
+    /*std::cout << " + CORRECTION " ;
     std::cout << " X (a: " << this->angle << " b: " << this->bias << ") y " << innovation << " @ " << measuredRate << " dt " << dt << "; ";
     std::cout << " P (00: " << this->P[0][0] << " 01: " << this->P[0][1] << "11: " << this->P[1][1] << " 11: " << this->P[1][1] << ") ";
     std::cout << " K (a: " << K[0] << " b: " << K[1] << ") ";
-    std::cout << "\n";
+    std::cout << "\n";*/
 }
 
 
